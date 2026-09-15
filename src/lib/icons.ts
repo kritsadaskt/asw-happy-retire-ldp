@@ -8,6 +8,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import {
+  faArrowLeft,
   faArrowRight,
   faArrowUpRightFromSquare,
   faAward,
@@ -59,6 +60,7 @@ import {
  * Messenger, Instagram, YouTube and TikTok come from FontAwesome Free brands.
  */
 export const icons = {
+  "arrow-left": faArrowLeft,
   "arrow-right": faArrowRight,
   award: faAward,
   building: faBuilding,
