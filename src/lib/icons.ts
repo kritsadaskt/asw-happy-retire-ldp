@@ -1,0 +1,115 @@
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+  faFacebookF,
+  faFacebookMessenger,
+  faInstagram,
+  faLine,
+  faTiktok,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faArrowRight,
+  faArrowUpRightFromSquare,
+  faAward,
+  faBars,
+  faBuilding,
+  faCalendarDays,
+  faChartSimple,
+  faCheck,
+  faChevronDown,
+  faChevronRight,
+  faCircleCheck,
+  faCity,
+  faClock,
+  faComments,
+  faDumbbell,
+  faEnvelope,
+  faExpand,
+  faGem,
+  faHandHoldingHeart,
+  faHeadset,
+  faHeartPulse,
+  faHouse,
+  faHouseChimney,
+  faLeaf,
+  faLocationDot,
+  faLock,
+  faMagnifyingGlass,
+  faMapLocationDot,
+  faPeopleRoof,
+  faPhone,
+  faSackDollar,
+  faShieldHalved,
+  faSpa,
+  faSun,
+  faTableCellsLarge,
+  faTrainSubway,
+  faTreeCity,
+  faUser,
+  faUserCheck,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+
+/**
+ * Icon registry. Content files reference icons by these plain string keys so
+ * nothing under src/content/ has to import from FontAwesome.
+ *
+ * FontAwesome Free **solid** is used everywhere except the brand marks at the
+ * bottom of the list — the solid set has no brand glyphs, so LINE, Facebook,
+ * Messenger, Instagram, YouTube and TikTok come from FontAwesome Free brands.
+ */
+export const icons = {
+  "arrow-right": faArrowRight,
+  award: faAward,
+  building: faBuilding,
+  calendar: faCalendarDays,
+  chart: faChartSimple,
+  check: faCheck,
+  "check-circle": faCircleCheck,
+  "chevron-down": faChevronDown,
+  "chevron-right": faChevronRight,
+  city: faCity,
+  clock: faClock,
+  close: faXmark,
+  comments: faComments,
+  dumbbell: faDumbbell,
+  envelope: faEnvelope,
+  expand: faExpand,
+  "external-link": faArrowUpRightFromSquare,
+  gem: faGem,
+  grid: faTableCellsLarge,
+  "hand-heart": faHandHoldingHeart,
+  headset: faHeadset,
+  heartbeat: faHeartPulse,
+  house: faHouse,
+  "house-chimney": faHouseChimney,
+  leaf: faLeaf,
+  lock: faLock,
+  map: faMapLocationDot,
+  menu: faBars,
+  money: faSackDollar,
+  "people-roof": faPeopleRoof,
+  phone: faPhone,
+  pin: faLocationDot,
+  search: faMagnifyingGlass,
+  shield: faShieldHalved,
+  spa: faSpa,
+  sun: faSun,
+  train: faTrainSubway,
+  "tree-city": faTreeCity,
+  user: faUser,
+  "user-check": faUserCheck,
+
+  facebook: faFacebookF,
+  instagram: faInstagram,
+  line: faLine,
+  messenger: faFacebookMessenger,
+  tiktok: faTiktok,
+  youtube: faYoutube,
+} satisfies Record<string, IconDefinition>;
+
+export type IconKey = keyof typeof icons;
+
+export function getIcon(key: IconKey): IconDefinition {
+  return icons[key];
+}
