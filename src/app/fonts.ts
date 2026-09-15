@@ -1,3 +1,5 @@
+import localFont from "next/font/local";
+
 /**
  * Single place where the brand typeface is declared.
  *
@@ -12,30 +14,34 @@
  * Nothing outside this file needs to change — everything consumes the
  * `--font-heavent` CSS variable through Tailwind's `font-sans`.
  */
-import { Noto_Sans_Thai } from "next/font/google";
+// import { Noto_Sans_Thai } from "next/font/google";
 // import localFont from "next/font/local";
 
-export const brandFont = Noto_Sans_Thai({
-  subsets: ["thai", "latin"],
-  display: "swap",
-  variable: "--font-heavent",
-});
+// export const brandFont = Noto_Sans_Thai({
+//   subsets: ["thai", "latin"],
+//   display: "swap",
+//   variable: "--font-heavent",
+// });
 
-/*
 export const brandFont = localFont({
   src: [
     {
-      path: "../../public/fonts/DBHeavent.woff2",
+      path: "../../public/fonts/db_heavent_thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/db_heavent.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/DBHeaventMed.woff2",
+      path: "../../public/fonts/db_heavent_med.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../../public/fonts/DBHeaventBd.woff2",
+      path: "../../public/fonts/db_heavent_bd.woff2",
       weight: "700",
       style: "normal",
     },
@@ -45,4 +51,4 @@ export const brandFont = localFont({
   fallback: ["Noto Sans Thai", "system-ui", "sans-serif"],
   variable: "--font-heavent",
 });
-*/
+

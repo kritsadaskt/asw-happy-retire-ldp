@@ -9,10 +9,10 @@ export const site = {
   campaignName: "Happy Retire",
 
   logo: {
-    src: "/images/logo-assetwise.png",
-    alt: "AssetWise — Living a Better Tomorrow",
-    width: 480,
-    height: 120,
+    src: "/images/1200x129_navy.svg",
+    alt: "AssetWise - We Build Happiness",
+    width: 300,
+    height: 32,
   } satisfies ImageContent,
 
   phone: {

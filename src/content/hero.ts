@@ -11,6 +11,15 @@ import type {
  * เปลี่ยนรูปได้โดยวางไฟล์ทับใน public/images/ หรือแก้ path ด้านล่าง
  */
 export const hero = {
+
+  desktop: {
+    src: "/images/mockup-hero-desktop.webp",
+    alt: "AssetWise - Happy Retire",
+    width: 1920,
+    height: 1024,
+  } satisfies ImageContent,
+
+  
   eyebrow: "ASSETWISE",
 
   /** โลโก้ลายมือ “Happy Retire” วางซ้อนบนภาพ */

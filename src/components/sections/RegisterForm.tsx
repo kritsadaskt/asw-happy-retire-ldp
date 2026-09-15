@@ -105,53 +105,51 @@ export function RegisterForm() {
           {/* 2 — form */}
           <div className="xl:border-x xl:border-navy/10 xl:px-6">
             <form onSubmit={onSubmit} noValidate className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <TextField
-                  id="fullName"
-                  label={fields.fullName.label}
-                  icon={fields.fullName.icon}
-                  placeholder={fields.fullName.placeholder}
-                  required={fields.fullName.required}
-                  requiredHint={content.requiredHint}
-                  autoComplete="name"
-                  error={errors.fullName?.message}
-                  {...registerField("fullName")}
-                />
+              <TextField
+                id="fullName"
+                label={fields.fullName.label}
+                icon={fields.fullName.icon}
+                placeholder={fields.fullName.placeholder}
+                required={fields.fullName.required}
+                requiredHint={content.requiredHint}
+                autoComplete="name"
+                error={errors.fullName?.message}
+                {...registerField("fullName")}
+              />
 
-                <TextField
-                  id="phone"
-                  label={fields.phone.label}
-                  icon={fields.phone.icon}
-                  placeholder={fields.phone.placeholder}
-                  required={fields.phone.required}
-                  requiredHint={content.requiredHint}
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  error={errors.phone?.message}
-                  {...registerField("phone")}
-                />
+              <TextField
+                id="phone"
+                label={fields.phone.label}
+                icon={fields.phone.icon}
+                placeholder={fields.phone.placeholder}
+                required={fields.phone.required}
+                requiredHint={content.requiredHint}
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                error={errors.phone?.message}
+                {...registerField("phone")}
+              />
 
-                <SelectField
-                  id="residenceType"
-                  label={fields.residenceType.label}
-                  icon={fields.residenceType.icon}
-                  placeholder={fields.residenceType.placeholder}
-                  options={fields.residenceType.options}
-                  error={errors.residenceType?.message}
-                  {...registerField("residenceType")}
-                />
+              <SelectField
+                id="residenceType"
+                label={fields.residenceType.label}
+                icon={fields.residenceType.icon}
+                placeholder={fields.residenceType.placeholder}
+                options={fields.residenceType.options}
+                error={errors.residenceType?.message}
+                {...registerField("residenceType")}
+              />
 
-                <SelectField
-                  id="budget"
-                  label={fields.budget.label}
-                  icon={fields.budget.icon}
-                  placeholder={fields.budget.placeholder}
-                  options={fields.budget.options}
-                  error={errors.budget?.message}
-                  {...registerField("budget")}
-                />
-              </div>
+              <SelectField
+                id="budget"
+                label={fields.budget.label}
+                icon={fields.budget.icon}
+                placeholder={fields.budget.placeholder}
+                options={fields.budget.options}
+                error={errors.budget?.message}
+                {...registerField("budget")}
+              />
 
               <DateField
                 id="visitDate"
@@ -192,7 +190,7 @@ export function RegisterForm() {
 
           {/* 3 — direct contact */}
           <div className="flex flex-col gap-4">
-            <div className="xl:text-right">
+            <div className="xl:text-center">
               <p className="text-sm text-navy/55">{content.contact.kicker}</p>
               <h3 className="text-xl font-bold md:text-2xl">
                 {content.contact.title}
@@ -204,15 +202,19 @@ export function RegisterForm() {
               external
               variant="line"
               size="lg"
-              icon="line"
               className="w-full justify-start gap-4 px-6 text-left whitespace-normal"
             >
-              <span className="block leading-tight">
-                <span className="block text-base font-bold">
-                  {site.line.label}
+              <span className="flex items-center gap-4">
+                <span className="inline-flex size-10 shrink-0 items-center justify-center">
+                  <Icon name="line" className="block size-10!" />
                 </span>
-                <span className="block text-xs font-medium text-white/85">
-                  {site.line.caption}
+                <span className="block leading-tight">
+                  <span className="block text-base font-bold">
+                    {site.line.label}
+                  </span>
+                  <span className="block text-xs font-medium text-white/85">
+                    {site.line.caption}
+                  </span>
                 </span>
               </span>
             </ButtonLink>
@@ -221,34 +223,38 @@ export function RegisterForm() {
               href={site.messenger.href}
               external
               size="lg"
-              icon="messenger"
               className="w-full justify-start gap-4 bg-messenger px-6 text-left whitespace-normal hover:brightness-95"
             >
-              <span className="block leading-tight">
-                <span className="block text-base font-bold">
-                  {site.messenger.label}
+              <span className="flex items-center gap-4">
+                <span className="inline-flex size-10 shrink-0 items-center justify-center">
+                  <Icon name="messenger" className="block size-10!" />
                 </span>
-                <span className="block text-xs font-medium text-white/85">
-                  {site.messenger.caption}
+                <span className="block leading-tight">
+                  <span className="block text-base font-bold">
+                    {site.messenger.label}
+                  </span>
+                  <span className="block text-xs font-medium text-white/85">
+                    {site.messenger.caption}
+                  </span>
                 </span>
               </span>
             </ButtonLink>
 
             <a
               href={site.phone.href}
-              className="flex items-center gap-4 rounded-2xl bg-cream px-6 py-5 transition hover:bg-cream-deep"
+              className="flex items-center gap-4 rounded-2xl bg-cream/60 px-6 py-5 transition hover:bg-cream-deep/60"
             >
               <span className="grid size-12 shrink-0 place-items-center rounded-full bg-navy text-white">
                 <Icon name="phone" />
               </span>
               <span className="leading-tight">
-                <span className="block text-xs text-navy/65">
+                <span className="block text-xs text-navy/80">
                   {site.phone.label}
                 </span>
                 <span className="block text-2xl font-bold whitespace-nowrap text-navy">
                   {site.phone.display}
                 </span>
-                <span className="block text-xs text-navy/55">
+                <span className="block text-xs text-navy/80">
                   {site.officeHours}
                 </span>
               </span>
