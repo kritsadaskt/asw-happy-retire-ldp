@@ -2,10 +2,10 @@ import type { FeatureContent, LinkContent } from "./types";
 
 export const thankYou = {
   eyebrow: "THANK YOU",
-  title: "ขอบคุณที่ลงทะเบียน",
-  subtitle: "ทีมงาน AssetWise Happy Retire ได้รับข้อมูลของคุณแล้ว",
+  title: "ลงทะเบียนสำเร็จ",
+  subtitle: "เราได้รับข้อมูลของคุณแล้ว",
   description:
-    "เจ้าหน้าที่จะติดต่อกลับภายใน 1 วันทำการ เพื่อยืนยันนัดหมายและแนะนำโครงการที่ตรงกับความต้องการของคุณ",
+    "เจ้าหน้าที่จะติดต่อกลับ เพื่อยืนยันนัดหมายและแนะนำโครงการที่ตรงกับความต้องการของคุณ",
 
   steps: [
     {
@@ -28,7 +28,7 @@ export const thankYou = {
   primaryCta: { label: "กลับไปหน้าแรก", href: "/" } satisfies LinkContent,
   secondaryCta: {
     label: "ดูโครงการทั้งหมด",
-    href: "https://www.assetwise.co.th/project",
+    href: "https://www.assetwise.co.th/",
     external: true,
   } satisfies LinkContent,
 

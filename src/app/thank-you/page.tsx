@@ -36,41 +36,18 @@ export default function ThankYouPage() {
             <p className="mx-auto mt-2 max-w-xl text-sm text-navy/65 md:text-base">
               {thankYou.description}
             </p>
-
-            <ol className="mt-9 grid gap-3 sm:grid-cols-3">
-              {thankYou.steps.map((step, index) => (
-                <li
-                  key={step.title}
-                  className="rounded-2xl bg-cream-soft px-4 py-5 text-center"
-                >
-                  <span className="mx-auto mb-3 grid size-9 place-items-center rounded-full bg-navy text-xs font-bold text-cream">
-                    {index + 1}
-                  </span>
-                  <Icon
-                    name={step.icon}
-                    className="mb-2 block text-xl text-navy"
-                  />
-                  <p className="text-sm leading-snug font-bold">{step.title}</p>
-                  {step.caption ? (
-                    <p className="mt-1 text-2xs leading-snug text-navy/60">
-                      {step.caption}
-                    </p>
-                  ) : null}
-                </li>
-              ))}
-            </ol>
-
+            
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <ButtonLink
                 href={thankYou.primaryCta.href}
-                trailingIcon="arrow-right"
+                icon="arrow-left"
               >
                 {thankYou.primaryCta.label}
               </ButtonLink>
               <ButtonLink
                 href={thankYou.secondaryCta.href}
                 external
-                variant="outline"
+                variant="ghost"
               >
                 {thankYou.secondaryCta.label}
               </ButtonLink>
