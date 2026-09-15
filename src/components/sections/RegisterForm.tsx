@@ -66,7 +66,8 @@ export function RegisterForm() {
   return (
     <section id="register" className="scroll-mt-24 bg-cream py-12 md:py-16">
       <div className="shell">
-        <div className="grid gap-8 rounded-[28px] bg-white p-6 shadow-card md:p-9 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.5fr)_minmax(0,0.92fr)] lg:gap-6 lg:p-10">
+        {/* Three columns only from xl up — below that the copy gets too narrow. */}
+        <div className="grid gap-8 rounded-[28px] bg-white p-6 shadow-card md:p-9 xl:grid-cols-[minmax(0,0.78fr)_minmax(0,1.5fr)_minmax(0,0.92fr)] xl:gap-6 xl:p-10">
           {/* 1 — intro */}
           <div>
             <p className="eyebrow text-navy/50">{content.eyebrow}</p>
@@ -78,7 +79,7 @@ export function RegisterForm() {
             </p>
             <p className="mt-1 text-sm text-navy/60">{content.description}</p>
 
-            <ul className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
+            <ul className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-2">
               {content.benefits.map((benefit) => (
                 <li
                   key={benefit.title}
@@ -102,7 +103,7 @@ export function RegisterForm() {
           </div>
 
           {/* 2 — form */}
-          <div className="lg:border-x lg:border-navy/10 lg:px-6">
+          <div className="xl:border-x xl:border-navy/10 xl:px-6">
             <form onSubmit={onSubmit} noValidate className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <TextField
@@ -191,7 +192,7 @@ export function RegisterForm() {
 
           {/* 3 — direct contact */}
           <div className="flex flex-col gap-4">
-            <div className="lg:text-right">
+            <div className="xl:text-right">
               <p className="text-sm text-navy/55">{content.contact.kicker}</p>
               <h3 className="text-xl font-bold md:text-2xl">
                 {content.contact.title}
@@ -204,7 +205,7 @@ export function RegisterForm() {
               variant="line"
               size="lg"
               icon="line"
-              className="w-full justify-start gap-4 px-6 text-left"
+              className="w-full justify-start gap-4 px-6 text-left whitespace-normal"
             >
               <span className="block leading-tight">
                 <span className="block text-base font-bold">
@@ -221,7 +222,7 @@ export function RegisterForm() {
               external
               size="lg"
               icon="messenger"
-              className="w-full justify-start gap-4 bg-messenger px-6 text-left hover:brightness-95"
+              className="w-full justify-start gap-4 bg-messenger px-6 text-left whitespace-normal hover:brightness-95"
             >
               <span className="block leading-tight">
                 <span className="block text-base font-bold">
@@ -244,7 +245,7 @@ export function RegisterForm() {
                 <span className="block text-xs text-navy/65">
                   {site.phone.label}
                 </span>
-                <span className="block text-2xl font-bold text-navy">
+                <span className="block text-2xl font-bold whitespace-nowrap text-navy">
                   {site.phone.display}
                 </span>
                 <span className="block text-xs text-navy/55">

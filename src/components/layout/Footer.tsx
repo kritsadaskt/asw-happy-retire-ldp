@@ -58,7 +58,7 @@ export function Footer() {
 
           <a
             href={site.phone.href}
-            className="flex items-center gap-2 text-sm font-bold text-navy transition hover:text-navy-soft"
+            className="flex items-center gap-2 text-sm font-bold whitespace-nowrap text-navy transition hover:text-navy-soft"
           >
             <Icon name="phone" className="text-xs" />
             {site.phone.display}
