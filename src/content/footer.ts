@@ -16,26 +16,32 @@ export const footer = {
   socials: [
     {
       label: "LINE Official",
-      href: "https://line.me/R/ti/p/@assetwise",
+      href: "https://page.line.me/assetwise",
       icon: "line",
       external: true,
     },
     {
       label: "Facebook",
-      href: "https://www.facebook.com/assetwise",
+      href: "https://www.facebook.com/AssetWiseThailand/",
       icon: "facebook",
       external: true,
     },
     {
       label: "Instagram",
-      href: "https://www.instagram.com/assetwise",
+      href: "https://www.instagram.com/assetwisethailand/",
       icon: "instagram",
       external: true,
     },
     {
       label: "YouTube",
-      href: "https://www.youtube.com/@assetwise",
+      href: "https://www.youtube.com/c/AssetwiseChannel",
       icon: "youtube",
+      external: true,
+    },
+    {
+      label: "TikTok",
+      href: "https://www.tiktok.com/@assetwise",
+      icon: "tiktok",
       external: true,
     },
   ] satisfies IconLinkContent[],

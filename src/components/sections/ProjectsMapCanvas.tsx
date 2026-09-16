@@ -7,10 +7,14 @@ import {
   Marker,
   useMap,
 } from "@vis.gl/react-google-maps";
-import Image from "next/image";
 import { useEffect } from "react";
 
-import { projectsSection, type Project } from "@/content/projects";
+import { Icon } from "@/components/ui/Icon";
+import {
+  getProjectTypeMeta,
+  projectsSection,
+  type Project,
+} from "@/content/projects";
 import { cn } from "@/lib/cn";
 
 type CanvasProps = {
@@ -23,31 +27,58 @@ type CanvasProps = {
 
 const { center, zoom, focusZoom } = projectsSection.mapDefaults;
 
-/** Pans and zooms to the selected project whenever the selection changes. */
+/** Pans to a selected pin, otherwise fits every visible project on screen. */
 function CameraController({
   target,
+  projects,
 }: {
   target: { lat: number; lng: number } | null;
+  projects: Project[];
 }) {
   const map = useMap();
 
   useEffect(() => {
     if (!map) return;
 
-    if (!target) {
-      map.panTo(center);
-      map.setZoom(zoom);
-      return;
-    }
+    try {
+      if (target) {
+        map.panTo(target);
+        map.setZoom(focusZoom);
+        return;
+      }
 
-    map.panTo(target);
-    map.setZoom(focusZoom);
-  }, [map, target]);
+      if (projects.length === 0) {
+        map.panTo(center);
+        map.setZoom(zoom);
+        return;
+      }
+
+      if (projects.length === 1) {
+        map.panTo(projects[0].position);
+        map.setZoom(focusZoom);
+        return;
+      }
+
+      if (typeof google === "undefined" || !google.maps?.LatLngBounds) {
+        map.panTo(center);
+        map.setZoom(zoom);
+        return;
+      }
+
+      const bounds = new google.maps.LatLngBounds();
+      for (const project of projects) {
+        bounds.extend(project.position);
+      }
+      map.fitBounds(bounds, 80);
+    } catch {
+      // Google Maps may reject camera calls when the SDK failed to load.
+    }
+  }, [map, target, projects]);
 
   return null;
 }
 
-function LogoMarker({
+function TypeMarker({
   project,
   isActive,
   onSelect,
@@ -56,6 +87,8 @@ function LogoMarker({
   isActive: boolean;
   onSelect: (id: string) => void;
 }) {
+  const type = getProjectTypeMeta(project.type);
+
   return (
     <AdvancedMarker
       position={project.position}
@@ -68,30 +101,29 @@ function LogoMarker({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${projectsSection.viewProjectLabel} ${project.name}`}
-        className="block -translate-y-1/2"
+        className="relative block pb-1.5"
       >
         <span
           className={cn(
-            "relative flex items-center gap-2 rounded-full border-2 bg-white py-1 pr-3 pl-1 shadow-float transition",
+            "relative flex origin-bottom items-center gap-2 rounded-full border-2 bg-white py-1 pr-3 pl-1 shadow-float transition",
             isActive
               ? "scale-110 border-navy"
               : "border-white hover:border-navy/40",
           )}
         >
-          <Image
-            src={project.logo}
-            alt=""
-            width={256}
-            height={256}
-            className="size-8 rounded-full object-cover"
-          />
+          <span
+            className="grid size-8 place-items-center rounded-full bg-cream-soft text-navy"
+            title={type.label}
+          >
+            <Icon name={type.icon} className="text-xs" />
+          </span>
           <span className="text-2xs leading-none font-bold whitespace-nowrap text-navy">
             {project.name}
           </span>
           <span
             aria-hidden
             className={cn(
-              "absolute -bottom-1.5 left-4 size-3 rotate-45 border-r-2 border-b-2 bg-white",
+              "absolute top-full left-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rotate-45 border-r-2 border-b-2 bg-white",
               isActive ? "border-navy" : "border-white",
             )}
           />
@@ -119,20 +151,22 @@ export default function ProjectsMapCanvas({
         gestureHandling="cooperative"
         disableDefaultUI
         zoomControl
+        minZoom={6}
+        maxZoom={16}
         clickableIcons={false}
         reuseMaps
         className="size-full"
       >
         {projects.map((project) =>
           mapId ? (
-            <LogoMarker
+            <TypeMarker
               key={project.id}
               project={project}
               isActive={project.id === activeId}
               onSelect={onSelect}
             />
           ) : (
-            // AdvancedMarker (and therefore the logo pins) needs a Map ID.
+            // AdvancedMarker (and therefore the type pins) needs a Map ID.
             // Without one the map still works with the classic pins.
             <Marker
               key={project.id}
@@ -143,7 +177,10 @@ export default function ProjectsMapCanvas({
           ),
         )}
 
-        <CameraController target={active ? active.position : null} />
+        <CameraController
+          target={active ? active.position : null}
+          projects={projects}
+        />
       </Map>
     </APIProvider>
   );

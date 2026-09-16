@@ -13,29 +13,8 @@ export function Footer() {
           alt={site.logo.alt}
           width={site.logo.width}
           height={site.logo.height}
-          className="h-8 w-auto shrink-0"
+          className="w-40 h-auto"
         />
-
-        <nav aria-label="เมนูส่วนท้าย" className="order-3 lg:order-none">
-          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-navy/70">
-            {footer.links.map((link) => (
-              <li
-                key={link.href}
-                className="after:ml-5 after:text-navy/25 after:content-['|'] last:after:content-none"
-              >
-                <a
-                  href={link.href}
-                  className="transition hover:text-navy"
-                  {...(link.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         <div className="flex items-center gap-4">
           <ul className="flex items-center gap-2">
