@@ -8,9 +8,10 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import {
-  projects,
   projectsSection as content,
+  getProjectTypeMeta,
   zones,
+  type Project,
   type ZoneId,
 } from "@/content/projects";
 import { cn } from "@/lib/cn";
@@ -30,7 +31,7 @@ const ProjectsMapCanvas = dynamic(
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY?.trim() ?? "";
 const mapId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID?.trim() || null;
 
-export function ProjectsMap() {
+export function ProjectsMap({ projects }: { projects: Project[] }) {
   const [zone, setZone] = useState<ZoneId>("all");
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -39,7 +40,13 @@ export function ProjectsMap() {
       zone === "all"
         ? projects
         : projects.filter((project) => project.zone === zone),
-    [zone],
+    [projects, zone],
+  );
+
+  const listedProjects = useMemo(
+    () =>
+      visibleProjects.filter((project) => project.status === "ready_project"),
+    [visibleProjects],
   );
 
   const selectZone = (next: ZoneId) => {
@@ -47,56 +54,52 @@ export function ProjectsMap() {
     setActiveId(null);
   };
 
-  const zoneList = (
-    <ul className="space-y-1">
-      {zones.map((item) => {
-        const isActive = item.id === zone;
-        return (
-          <li key={item.id}>
-            <button
-              type="button"
-              onClick={() => selectZone(item.id)}
-              aria-pressed={isActive}
-              className={cn(
-                "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left transition",
-                isActive
-                  ? "bg-navy text-white"
-                  : "text-navy hover:bg-navy/5",
-              )}
-            >
-              <Icon
-                name={item.icon}
-                className={cn(
-                  "shrink-0 text-sm",
-                  isActive ? "text-cream" : "text-navy/55",
-                )}
-              />
-              <span className="min-w-0 leading-tight">
-                <span className="block truncate text-sm font-bold">
-                  {item.label}
-                </span>
-                {item.caption ? (
-                  <span
+  const zoneRows = [zones.slice(0, 5), zones.slice(5)];
+
+  const zoneNav = (
+    <nav aria-label={content.zoneSelectLabel}>
+      <div className="flex flex-col items-center gap-1 rounded-2xl bg-white/97 p-1.5 shadow-float backdrop-blur">
+        {zoneRows.map((row) => (
+          <ul
+            key={row.map((item) => item.id).join("-")}
+            className="flex flex-wrap justify-center gap-1"
+          >
+            {row.map((item) => {
+              const isActive = item.id === zone;
+              return (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() => selectZone(item.id)}
+                    aria-pressed={isActive}
                     className={cn(
-                      "block truncate text-2xs",
-                      isActive ? "text-white/70" : "text-navy/50",
+                      "flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium whitespace-nowrap transition",
+                      isActive
+                        ? "bg-navy text-white"
+                        : "text-navy hover:bg-navy/5",
                     )}
                   >
-                    {item.caption}
-                  </span>
-                ) : null}
-              </span>
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+                    <Icon
+                      name={item.icon}
+                      className={cn(
+                        "text-xs",
+                        isActive ? "text-cream" : "text-navy/50",
+                      )}
+                    />
+                    {item.label}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ))}
+      </div>
+    </nav>
   );
 
-  const projectCard = (projectId: string, className?: string) => {
-    const project = visibleProjects.find((item) => item.id === projectId);
-    if (!project) return null;
+  const projectCard = (project: Project, className?: string) => {
     const isActive = project.id === activeId;
+    const type = getProjectTypeMeta(project.type);
 
     return (
       <div
@@ -114,13 +117,12 @@ export function ProjectsMap() {
           onClick={() => setActiveId(project.id)}
           className="flex min-w-0 flex-1 items-center gap-3 text-left"
         >
-          <Image
-            src={project.logo}
-            alt=""
-            width={256}
-            height={256}
-            className="size-10 shrink-0 rounded-xl object-cover"
-          />
+          <span
+            className="grid size-10 shrink-0 place-items-center rounded-xl bg-cream-soft text-navy"
+            title={type.label}
+          >
+            <Icon name={type.icon} className="text-sm" />
+          </span>
           <span className="min-w-0 leading-tight">
             <span className="block truncate text-sm font-bold text-navy">
               {project.name}
@@ -128,9 +130,11 @@ export function ProjectsMap() {
             <span className="block truncate text-2xs text-navy/55">
               {project.location}
             </span>
-            <span className="block text-2xs font-bold text-navy/80">
-              {project.priceFrom}
-            </span>
+            {project.priceFrom ? (
+              <span className="block text-2xs font-bold text-navy/80">
+                {project.priceFrom}
+              </span>
+            ) : null}
           </span>
         </button>
 
@@ -157,35 +161,13 @@ export function ProjectsMap() {
             description={content.subtitle}
           />
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <label className="flex items-center gap-3 rounded-full border border-navy/15 bg-white px-5 py-3">
-              <Icon name="search" className="shrink-0 text-sm text-navy/50" />
-              <span className="sr-only">{content.zoneSelectLabel}</span>
-              <select
-                value={zone}
-                onChange={(event) => selectZone(event.target.value as ZoneId)}
-                className="w-full appearance-none bg-transparent text-sm font-medium text-navy focus:outline-none sm:w-56"
-              >
-                {zones.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.id === "all" ? content.zoneSelectLabel : item.label}
-                  </option>
-                ))}
-              </select>
-              <Icon
-                name="chevron-down"
-                className="shrink-0 text-xs text-navy/45"
-              />
-            </label>
-
-            <ButtonLink
-              href={content.allProjectsCta.href}
-              external
-              trailingIcon="arrow-right"
-            >
-              {content.allProjectsCta.label}
-            </ButtonLink>
-          </div>
+          <ButtonLink
+            href={content.allProjectsCta.href}
+            external
+            trailingIcon="arrow-right"
+          >
+            {content.allProjectsCta.label}
+          </ButtonLink>
         </div>
 
         {apiKey ? null : (
@@ -203,34 +185,7 @@ export function ProjectsMap() {
         )}
       </div>
 
-      {/* Mobile zone chips */}
-      <div className="mt-6 lg:hidden">
-        <ul className="flex snap-x gap-2 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {zones.map((item) => {
-            const isActive = item.id === zone;
-            return (
-              <li key={item.id} className="snap-start">
-                <button
-                  type="button"
-                  onClick={() => selectZone(item.id)}
-                  aria-pressed={isActive}
-                  className={cn(
-                    "flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold whitespace-nowrap transition",
-                    isActive
-                      ? "border-navy bg-navy text-white"
-                      : "border-navy/15 bg-white text-navy",
-                  )}
-                >
-                  <Icon name={item.icon} className="text-2xs" />
-                  {item.label}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-
-      <div className="relative mt-4 lg:mt-8">
+      <div className="relative mt-6 lg:mt-8">
         <div className="h-[60vh] min-h-[440px] w-full overflow-hidden bg-navy-mist md:h-[70vh] md:min-h-[620px] lg:h-[78vh]">
           {apiKey ? (
             <ProjectsMapCanvas
@@ -251,69 +206,61 @@ export function ProjectsMap() {
           )}
         </div>
 
-        {/* Desktop floating panels */}
-        <div className="pointer-events-none absolute inset-0 hidden lg:block">
-          <div className="shell relative h-full">
-            <div className="pointer-events-auto absolute top-6 left-5 flex h-[calc(100%-3rem)] w-[336px] flex-col overflow-hidden rounded-3xl bg-white/97 shadow-float backdrop-blur">
-              <div className="shrink-0 border-b border-navy/10 p-3">
-                {zoneList}
+        <div className="pointer-events-none absolute inset-0 flex flex-col pt-3 lg:pt-5">
+          <div className="pointer-events-auto shrink-0 px-4 lg:px-0">
+            <div className="shell">{zoneNav}</div>
+          </div>
+
+          <div className="relative min-h-0 flex-1">
+            <div className="shell relative hidden h-full lg:block">
+              <div className="pointer-events-auto absolute top-3 left-5 flex w-[336px] max-h-[calc(100%-1.5rem)] flex-col overflow-hidden rounded-3xl bg-white/97 shadow-float backdrop-blur">
+                <div className="flex shrink-0 items-baseline justify-between px-4 pt-4 pb-2">
+                  <p className="text-xs font-bold text-navy/70">
+                    {content.listTitle}
+                  </p>
+                  <p className="text-2xs text-navy/50">
+                    {listedProjects.length} {content.projectCountSuffix}
+                  </p>
+                </div>
+
+                <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-3 pt-1">
+                  {listedProjects.length === 0 ? (
+                    <p className="rounded-2xl bg-cream-soft px-4 py-5 text-center text-xs text-navy/60">
+                      {content.emptyState}
+                    </p>
+                  ) : (
+                    listedProjects.map((project) => projectCard(project))
+                  )}
+                </div>
               </div>
 
-              <div className="flex shrink-0 items-baseline justify-between px-4 pt-3">
-                <p className="text-xs font-bold text-navy/70">
-                  {content.listTitle}
-                </p>
-                <p className="text-2xs text-navy/50">
-                  {visibleProjects.length} {content.projectCountSuffix}
-                </p>
+              <div className="pointer-events-auto absolute right-5 bottom-6">
+                <ButtonLink
+                  href={content.fullMapCta.href}
+                  external
+                  icon="expand"
+                >
+                  {content.fullMapCta.label}
+                </ButtonLink>
               </div>
+            </div>
 
-              <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-3">
-                {visibleProjects.length === 0 ? (
-                  <p className="rounded-2xl bg-cream-soft px-4 py-5 text-center text-xs text-navy/60">
+            <div className="pointer-events-auto absolute inset-x-0 bottom-0 lg:hidden">
+              <div className="flex snap-x gap-3 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {listedProjects.length === 0 ? (
+                  <p className="w-full rounded-2xl bg-white px-4 py-4 text-center text-xs text-navy/60 shadow-float">
                     {content.emptyState}
                   </p>
                 ) : (
-                  visibleProjects.map((project) => projectCard(project.id))
+                  listedProjects.map((project) =>
+                    projectCard(
+                      project,
+                      "w-[270px] shrink-0 snap-start shadow-float",
+                    ),
+                  )
                 )}
               </div>
             </div>
-
-            <p className="absolute top-10 right-5 max-w-[260px] text-right text-xl leading-snug font-bold text-navy drop-shadow-[0_2px_10px_rgba(255,255,255,0.9)]">
-              {content.quote.lines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </p>
-
-            <div className="pointer-events-auto absolute right-5 bottom-6">
-              <ButtonLink
-                href={content.fullMapCta.href}
-                external
-                icon="expand"
-              >
-                {content.fullMapCta.label}
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile bottom sheet */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 lg:hidden">
-          <div className="pointer-events-auto flex snap-x gap-3 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {visibleProjects.length === 0 ? (
-              <p className="w-full rounded-2xl bg-white px-4 py-4 text-center text-xs text-navy/60 shadow-float">
-                {content.emptyState}
-              </p>
-            ) : (
-              visibleProjects.map((project) =>
-                projectCard(
-                  project.id,
-                  "w-[270px] shrink-0 snap-start shadow-float",
-                ),
-              )
-            )}
           </div>
         </div>
       </div>
