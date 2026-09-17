@@ -6,7 +6,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button, ButtonLink } from "@/components/ui/Button";
-import { DateField, SelectField, TextField } from "@/components/ui/Field";
+import {
+  CheckboxField,
+  DateField,
+  SelectField,
+  TextField,
+} from "@/components/ui/Field";
 import { Icon } from "@/components/ui/Icon";
 import { register as content } from "@/content/register";
 import { site } from "@/content/site";
@@ -25,6 +30,7 @@ export function RegisterForm() {
   const {
     register: registerField,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<RegisterInput, unknown, RegisterLead>({
     resolver: zodResolver(registerSchema),
@@ -35,8 +41,11 @@ export function RegisterForm() {
       residenceType: "",
       budget: "",
       visitDate: "",
+      acceptedTerms: true,
     },
   });
+
+  const acceptedTerms = watch("acceptedTerms");
 
   // ค่าที่กรอกไว้จะไม่ถูกล้างเมื่อส่งไม่สำเร็จ
   const onSubmit = handleSubmit(async (values) => {
@@ -160,6 +169,28 @@ export function RegisterForm() {
                 {...registerField("visitDate")}
               />
 
+              <CheckboxField
+                id="acceptedTerms"
+                error={
+                  !acceptedTerms
+                    ? content.errors.termsRequired
+                    : errors.acceptedTerms?.message
+                }
+                {...registerField("acceptedTerms")}
+              >
+                <label htmlFor="acceptedTerms" className="cursor-pointer">
+                  {content.terms.before}{" "}
+                </label>
+                <a
+                  href={content.terms.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-navy underline decoration-navy/30 underline-offset-2 transition hover:decoration-navy"
+                >
+                  {content.terms.linkLabel}
+                </a>
+              </CheckboxField>
+
               {submitError ? (
                 <p
                   role="alert"
@@ -173,7 +204,7 @@ export function RegisterForm() {
                 type="submit"
                 size="lg"
                 trailingIcon="arrow-right"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !acceptedTerms}
                 className="w-full"
               >
                 {isSubmitting

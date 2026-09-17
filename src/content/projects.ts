@@ -9,7 +9,8 @@ export type ZoneId =
   | "sukhumvit-bangna"
   | "ladkrabang-srinakarin"
   | "salaya-nakhonpathom"
-  | "eec";
+  | "eec"
+  | "ramintra-watcharapol";
 
 export type Zone = {
   id: ZoneId;
@@ -33,7 +34,7 @@ export type Project = {
   priceFrom: string;
   /** ลิงก์ไปหน้าโครงการจริง เปิดในแท็บใหม่ */
   url: string;
-  /** พิกัดจริงจาก API `/wp-json/wp/v2/all-projects` */
+  /** พิกัดจาก snapshot `src/data/all-projects.json` */
   position: { lat: number; lng: number };
 };
 
@@ -59,6 +60,7 @@ export const zones: Zone[] = [
   { id: "ladkrabang-srinakarin", label: "ลาดกระบัง–ศรีนครินทร์", icon: "city" },
   { id: "salaya-nakhonpathom", label: "ศาลายา–นครปฐม", icon: "tree-city" },
   { id: "eec", label: "EEC", icon: "sun" },
+  { id: "ramintra-watcharapol", label: "รามอินทรา–วัชรพล", icon: "map" },
 ];
 
 export const projectsSection = {
@@ -85,9 +87,6 @@ export const projectsSection = {
   },
 
   listTitle: "โครงการในโซนนี้",
-  loadingProjects: "กำลังโหลดโครงการ...",
-  loadError: "ไม่สามารถโหลดรายการโครงการได้ กรุณาลองใหม่อีกครั้ง",
-  retryLabel: "ลองใหม่",
   emptyState: "ยังไม่มีโครงการในโซนนี้ กรุณาเลือกโซนอื่น",
   projectCountSuffix: "โครงการ",
   viewProjectLabel: "ดูรายละเอียดโครงการ",

@@ -2,29 +2,24 @@ import { register as registerContent } from "@/content/register";
 import type { RegisterLead } from "@/lib/validation";
 
 /**
- * ทุกอย่างที่เกี่ยวกับการคุยกับ CIS อยู่ในไฟล์นี้ไฟล์เดียว
- * payload ยังเป็น "ร่าง" — เมื่อได้สเปคจริงจาก CIS ให้แก้ที่ `toCisPayload()`
+ * ทุกอย่างที่เกี่ยวกับการคุยกับ n8n อยู่ในไฟล์นี้ไฟล์เดียว
+ * เมื่อต้องปรับ shape ของ webhook ให้แก้ที่ `toN8nPayload()`
  * โดยไม่ต้องแตะ route handler หรือฟอร์ม
  */
 
 export const CAMPAIGN = "happy-retire";
 export const SOURCE = "assetwise.co.th/happyretire";
 
-export type CisConfig = {
-  endpoint: string | null;
-  apiKey: string | null;
+export type N8nConfig = {
+  webhookUrl: string | null;
   environment: "production" | "uat";
 };
 
-export function resolveCisConfig(): CisConfig {
+export function resolveN8nConfig(): N8nConfig {
   const isProduction = process.env.APP_ENV === "production";
-  const endpoint = isProduction
-    ? process.env.CIS_ENDPOINT_PROD
-    : process.env.CIS_ENDPOINT_UAT;
 
   return {
-    endpoint: endpoint?.trim() || null,
-    apiKey: process.env.CIS_API_KEY?.trim() || null,
+    webhookUrl: process.env.N8N_WEBHOOK_URL?.trim() || null,
     environment: isProduction ? "production" : "uat",
   };
 }
@@ -34,7 +29,7 @@ const labelOf = (
   value: string,
 ) => options.find((option) => option.value === value)?.label ?? "";
 
-export type CisPayload = {
+export type N8nPayload = {
   campaign: string;
   source: string;
   fullName: string;
@@ -44,38 +39,38 @@ export type CisPayload = {
   budget: string;
   budgetLabel: string;
   visitDate: string;
+  acceptedTerms: boolean;
   submittedAt: string;
 };
 
-export function toCisPayload(lead: RegisterLead): CisPayload {
+export function toN8nPayload(lead: RegisterLead): N8nPayload {
   const { residenceType, budget } = registerContent.fields;
 
   return {
     campaign: CAMPAIGN,
     source: SOURCE,
     fullName: lead.fullName,
-    // CIS ต้องการตัวเลขล้วน
     phone: lead.phone.replace(/\D/g, ""),
     residenceType: lead.residenceType,
     residenceTypeLabel: labelOf(residenceType.options, lead.residenceType),
     budget: lead.budget,
     budgetLabel: labelOf(budget.options, lead.budget),
     visitDate: lead.visitDate,
+    acceptedTerms: lead.acceptedTerms,
     submittedAt: new Date().toISOString(),
   };
 }
 
-export type CisResult =
+export type N8nResult =
   | { status: "delivered" }
   | { status: "not-configured" }
   | { status: "rejected"; httpStatus: number; detail: string }
   | { status: "unreachable"; detail: string };
 
-export async function submitLeadToCis(lead: RegisterLead): Promise<CisResult> {
-  const config = resolveCisConfig();
+export async function submitLeadToN8n(lead: RegisterLead): Promise<N8nResult> {
+  const config = resolveN8nConfig();
 
-  // ยังไม่ได้ตั้งค่า endpoint — ไม่ throw เพื่อให้หน้าเว็บใช้งานได้ตามปกติ
-  if (!config.endpoint) {
+  if (!config.webhookUrl) {
     return { status: "not-configured" };
   }
 
@@ -83,13 +78,12 @@ export async function submitLeadToCis(lead: RegisterLead): Promise<CisResult> {
   const timeout = setTimeout(() => controller.abort(), 12_000);
 
   try {
-    const response = await fetch(config.endpoint, {
+    const response = await fetch(config.webhookUrl, {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        ...(config.apiKey ? { "x-api-key": config.apiKey } : {}),
       },
-      body: JSON.stringify(toCisPayload(lead)),
+      body: JSON.stringify(toN8nPayload(lead)),
       cache: "no-store",
       signal: controller.signal,
     });

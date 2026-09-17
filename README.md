@@ -10,7 +10,7 @@ Landing page แคมเปญ **AssetWise Happy Retire** ภาษาไทย
 | `/` → `#projects` | Google Maps เต็มความกว้าง + กล่องลิสต์โครงการลอย + ตัวกรองโซน + หมุดโลโก้ |
 | `/` → `#contact`  | Footer แถบขาว โลโก้ซ้าย social + เบอร์โทรขวา                               |
 | `/thank-you`    | หน้าขอบคุณหลังลงทะเบียนสำเร็จ                                                |
-| `/api/register` | Route handler ส่งข้อมูลต่อไปยัง CIS (เลือก UAT/Prod ตาม env)                 |
+| `/api/register` | Route handler ส่งข้อมูลต่อไปยัง n8n webhook (`N8N_WEBHOOK_URL`)              |
 
 ---
 
@@ -34,9 +34,9 @@ npm run dev                  # http://localhost:3000
 | `npm run placeholders` | สร้างรูป placeholder ใหม่ใน `public/images` (ชั่วคราว) |
 
 > เว็บ **build และรันได้โดยไม่ต้องมี secret จริง**: ถ้าไม่มี Google Maps API key
-> ส่วนแผนที่จะแสดงภาพนิ่งพร้อมคำอธิบายแทน และถ้าไม่มี CIS endpoint ฟอร์มจะยัง
+> ส่วนแผนที่จะแสดงภาพนิ่งพร้อมคำอธิบายแทน และถ้าไม่มี n8n webhook ฟอร์มจะยัง
 > ทำงานครบ flow (ข้อมูลจะถูก log ไว้ฝั่งเซิร์ฟเวอร์เท่านั้น) — ดูรายละเอียดใน
-> หัวข้อ [การส่งข้อมูลไป CIS](#การส่งข้อมูลไป-cis)
+> หัวข้อ [การส่งข้อมูลไป n8n](#การส่งข้อมูลไป-n8n)
 
 ---
 
@@ -125,10 +125,8 @@ Messenger / Instagram / YouTube ที่ต้องใช้ชุด brands �
 
 | ตัวแปร                            | ฝั่ง    | คำอธิบาย                                                       |
 | --------------------------------- | ------- | -------------------------------------------------------------- |
-| `APP_ENV`                         | server  | `production` = ใช้ endpoint Prod, ค่าอื่น = ใช้ UAT             |
-| `CIS_ENDPOINT_UAT`                | server  | URL รับข้อมูลลงทะเบียน (UAT)                                   |
-| `CIS_ENDPOINT_PROD`               | server  | URL รับข้อมูลลงทะเบียน (Production)                            |
-| `CIS_API_KEY`                     | server  | ส่งไปกับ header `x-api-key`                                    |
+| `APP_ENV`                         | server  | `production` = ขาด webhook แล้วตอบ error, ค่าอื่น = โหมด demo   |
+| `N8N_WEBHOOK_URL`                 | server  | URL webhook ของ n8n ที่รับข้อมูลลงทะเบียน                      |
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | browser | ไม่ใส่ = แสดงภาพแทนแผนที่                                      |
 | `NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID`  | browser | จำเป็นสำหรับหมุดโลโก้ (Advanced Marker) ไม่ใส่ = ใช้หมุดมาตรฐาน |
 | `NEXT_PUBLIC_BASE_PATH`           | ทั้งคู่ | `/happyretire` บน Vercel, ปล่อยว่างตอน dev                     |
@@ -140,28 +138,28 @@ Project → Settings → Environment Variables
 
 | Environment          | ค่าที่แนะนำ                                                                       |
 | -------------------- | --------------------------------------------------------------------------------- |
-| Production           | `APP_ENV=production`, `CIS_ENDPOINT_PROD=...`, `NEXT_PUBLIC_BASE_PATH=/happyretire` |
-| Preview / Development | `APP_ENV=uat`, `CIS_ENDPOINT_UAT=...`, `NEXT_PUBLIC_BASE_PATH` ปล่อยว่าง           |
+| Production           | `APP_ENV=production`, `N8N_WEBHOOK_URL=...`, `NEXT_PUBLIC_BASE_PATH=/happyretire` |
+| Preview / Development | `APP_ENV=uat`, `N8N_WEBHOOK_URL=...`, `NEXT_PUBLIC_BASE_PATH` ปล่อยว่าง           |
 
 `NEXT_PUBLIC_*` ถูกฝังตอน build → เปลี่ยนค่าแล้วต้อง **redeploy** ทุกครั้ง
 
 ---
 
-## การส่งข้อมูลไป CIS
+## การส่งข้อมูลไป n8n
 
 ฟอร์มยิงไปที่ route handler ฝั่งเซิร์ฟเวอร์ `POST /api/register` (relative path
-เสมอ จึงได้ prefix `basePath` อัตโนมัติ) เพื่อไม่ให้ URL/โทเคนหลุดไปฝั่ง client
+เสมอ จึงได้ prefix `basePath` อัตโนมัติ) เพื่อไม่ให้ URL webhook หลุดไปฝั่ง client
 และเลี่ยงปัญหา CORS
 
 1. validate ด้วย zod (`src/lib/validation.ts`) — ข้อความ error ทั้งหมดมาจาก `src/content/register.ts`
-2. เลือก endpoint ตาม `APP_ENV` แล้ว map payload ใน **`src/lib/cis.ts`** (`toCisPayload()`)
+2. POST JSON ไปที่ `N8N_WEBHOOK_URL` โดย map payload ใน **`src/lib/n8n.ts`** (`toN8nPayload()`)
 3. สำเร็จ → `router.push("/thank-you")`; ล้มเหลว → แสดง error inline **โดยไม่ล้างข้อมูลที่กรอกไว้**
 
-payload ปัจจุบันเป็น **ร่าง** (`campaign`, `source`, `fullName`, `phone`,
+payload ปัจจุบันเป็น (`campaign`, `source`, `fullName`, `phone`,
 `residenceType(+Label)`, `budget(+Label)`, `visitDate`, `submittedAt`)
-เมื่อได้สเปคจริงจาก CIS ให้แก้เฉพาะ `toCisPayload()` ไฟล์เดียว
+เมื่อต้องปรับ shape ของ webhook ให้แก้เฉพาะ `toN8nPayload()` ไฟล์เดียว
 
-พฤติกรรมเมื่อ **ไม่มี** endpoint
+พฤติกรรมเมื่อ **ไม่มี** webhook
 
 | `APP_ENV`      | ผลลัพธ์                                                                 |
 | -------------- | ----------------------------------------------------------------------- |
@@ -200,6 +198,6 @@ npx wrangler deploy deploy/cloudflare-worker.js --name happyretire-proxy
 - [ ] ไฟล์ฟอนต์ DB Heavent (`public/fonts/`) — ตอนนี้ใช้ Noto Sans Thai แทน
 - [ ] key visual, โลโก้ AssetWise, โลโก้โครงการ — ตอนนี้เป็น placeholder ใน `public/images/`
 - [ ] พิกัด lat/lng จริงของแต่ละโครงการ + URL หน้าโครงการ — ใน `src/content/projects.ts`
-- [ ] สเปค payload จริงของ CIS — ปรับที่ `toCisPayload()` ใน `src/lib/cis.ts`
+- [ ] สเปค payload ของ n8n webhook — ปรับที่ `toN8nPayload()` ใน `src/lib/n8n.ts`
 - [ ] ลิงก์ LINE OA / Messenger / social จริง — ใน `src/content/site.ts` และ `src/content/footer.ts`
 - [ ] Google Maps API key + Map ID
