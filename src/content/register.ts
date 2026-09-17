@@ -32,7 +32,7 @@ export const register = {
 
     phone: {
       label: "เบอร์โทรศัพท์",
-      placeholder: "เช่น 081-234-5678",
+      placeholder: "เช่น 0812345678",
       icon: "phone",
       required: true,
     } satisfies FieldContent,

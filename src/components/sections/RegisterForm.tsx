@@ -27,12 +27,13 @@ const fields = content.fields;
 export function RegisterForm() {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isSending, setIsSending] = useState(false);
 
   const {
     register: registerField,
     handleSubmit,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<RegisterInput, unknown, RegisterLead>({
     resolver: zodResolver(registerSchema),
     mode: "onTouched",
@@ -47,10 +48,12 @@ export function RegisterForm() {
   });
 
   const acceptedTerms = watch("acceptedTerms");
+  const phoneField = registerField("phone");
 
   // ค่าที่กรอกไว้จะไม่ถูกล้างเมื่อส่งไม่สำเร็จ
   const onSubmit = handleSubmit(async (values) => {
     setSubmitError(null);
+    setIsSending(true);
     try {
       const response = await fetch(withBasePath("/api/register"), {
         method: "POST",
@@ -64,12 +67,14 @@ export function RegisterForm() {
 
       if (!response.ok || !payload?.ok) {
         setSubmitError(payload?.message ?? content.errors.submitFailed);
+        setIsSending(false);
         return;
       }
 
       router.push("/thank-you");
     } catch {
       setSubmitError(content.errors.network);
+      setIsSending(false);
     }
   });
 
@@ -114,7 +119,12 @@ export function RegisterForm() {
 
           {/* 2 — form */}
           <div className="xl:border-x xl:border-navy/10 xl:px-6">
-            <form onSubmit={onSubmit} noValidate className="space-y-4">
+            <form
+              onSubmit={onSubmit}
+              noValidate
+              className="space-y-4"
+              aria-busy={isSending || undefined}
+            >
               <TextField
                 id="fullName"
                 label={fields.fullName.label}
@@ -135,10 +145,24 @@ export function RegisterForm() {
                 required={fields.phone.required}
                 requiredHint={content.requiredHint}
                 type="tel"
-                inputMode="tel"
+                inputMode="numeric"
                 autoComplete="tel"
+                maxLength={10}
+                pattern="[0-9]*"
                 error={errors.phone?.message}
-                {...registerField("phone")}
+                {...phoneField}
+                onBeforeInput={(event) => {
+                  if (event.nativeEvent.inputType === "insertFromPaste") return;
+                  if (event.data && /\D/.test(event.data)) {
+                    event.preventDefault();
+                  }
+                }}
+                onChange={(event) => {
+                  event.target.value = event.target.value
+                    .replace(/\D/g, "")
+                    .slice(0, 10);
+                  phoneField.onChange(event);
+                }}
               />
 
               <SelectField
@@ -205,10 +229,11 @@ export function RegisterForm() {
                 type="submit"
                 size="lg"
                 trailingIcon="arrow-right"
-                disabled={isSubmitting || !acceptedTerms}
+                loading={isSending}
+                disabled={!acceptedTerms}
                 className="w-full"
               >
-                {isSubmitting
+                {isSending
                   ? content.submit.loadingLabel
                   : content.submit.label}
               </Button>
