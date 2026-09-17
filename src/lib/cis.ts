@@ -153,7 +153,7 @@ export function toCisPayload(
     Fname,
     Lname,
     Tel: tel || null,
-    Email: null,
+    Email: 'no-email@assetwise.co.th',
     Ref: REF_DETAIL,
     RefDate: formatRefDate(now),
     FollowUpID: FOLLOW_UP_ID,
@@ -175,26 +175,40 @@ export function toCisPayload(
   };
 }
 
-export type CisResult =
-  | { status: "delivered" }
-  | { status: "not-configured" }
-  | { status: "rejected"; httpStatus: number; detail: string }
-  | { status: "unreachable"; detail: string };
+export type CisResult = {
+  status: "delivered" | "not-configured" | "rejected" | "unreachable";
+  payload: CisPayload | null;
+  httpStatus?: number;
+  detail?: string;
+};
+
+function logCis(event: string, data: Record<string, unknown>) {
+  console.info(`[register] ${event}`, data);
+}
 
 export async function submitLeadToCis(lead: RegisterLead): Promise<CisResult> {
   const config = resolveCisConfig();
   const payload = toCisPayload(lead);
 
   if (!payload) {
+    logCis("CIS payload missing cis_project_id", { project: lead.project });
     return {
       status: "rejected",
+      payload: null,
       httpStatus: 400,
       detail: "missing cis_project_id",
     };
   }
 
+  logCis("CIS payload", payload);
+
   if (!config.endpoint || !config.apiKey) {
-    return { status: "not-configured" };
+    logCis("CIS skipped — endpoint or API key is not set", {
+      environment: config.environment,
+      hasEndpoint: Boolean(config.endpoint),
+      hasApiKey: Boolean(config.apiKey),
+    });
+    return { status: "not-configured", payload };
   }
 
   const controller = new AbortController();
@@ -212,17 +226,34 @@ export async function submitLeadToCis(lead: RegisterLead): Promise<CisResult> {
       signal: controller.signal,
     });
 
+    const detail = (await response.text().catch(() => "")).slice(0, 2000);
+
+    logCis("CIS response", {
+      endpoint: config.endpoint,
+      httpStatus: response.status,
+      ok: response.ok,
+      body: detail || "(empty)",
+    });
+
     if (!response.ok) {
-      const detail = (await response.text().catch(() => "")).slice(0, 500);
-      return { status: "rejected", httpStatus: response.status, detail };
+      return {
+        status: "rejected",
+        payload,
+        httpStatus: response.status,
+        detail,
+      };
     }
 
-    return { status: "delivered" };
-  } catch (error) {
     return {
-      status: "unreachable",
-      detail: error instanceof Error ? error.message : "unknown error",
+      status: "delivered",
+      payload,
+      httpStatus: response.status,
+      detail,
     };
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : "unknown error";
+    logCis("CIS unreachable", { endpoint: config.endpoint, detail });
+    return { status: "unreachable", payload, detail };
   } finally {
     clearTimeout(timeout);
   }

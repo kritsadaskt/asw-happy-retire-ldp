@@ -339,25 +339,6 @@ export function RegisterForm({
                 </span>
               </span>
             </a>
-
-            <ul className="mt-auto grid grid-cols-3 gap-2 pt-2">
-              {content.contact.trustBadges.map((badge) => (
-                <li key={badge.title} className="text-center">
-                  <Icon
-                    name={badge.icon}
-                    className="mb-1.5 block text-lg text-navy/70"
-                  />
-                  <p className="text-2xs leading-snug font-bold">
-                    {badge.title}
-                  </p>
-                  {badge.caption ? (
-                    <p className="text-2xs leading-snug text-navy/55">
-                      {badge.caption}
-                    </p>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
