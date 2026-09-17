@@ -43,18 +43,18 @@ export const site = {
   allProjectsUrl: "https://www.assetwise.co.th/project",
 
   seo: {
-    title: "AssetWise Happy Retire | คอนโดเพื่อชีวิตหลังเกษียณ",
+    title: "Happiness Never Retires | ความสุข..ไม่มีวันเกษียณ",
     description:
-      "ให้คอนโดหลังใหญ่เป็นจุดหมายใหม่ของชีวิตสำราญ ลงทะเบียนรับข้อมูลและนัดหมายเยี่ยมชมโครงการ AssetWise ทำเลดีทั่วกรุงเทพฯ ปริมณฑล และ EEC เริ่ม 1.51 ล้านบาท",
+      "ความสุข..ไม่มีวันเกษียณ ลงทะเบียนรับข้อมูลและนัดหมายเยี่ยมชมโครงการ AssetWise ทำเลดีทั่วกรุงเทพฯ ปริมณฑล และ EEC",
     keywords: [
       "AssetWise",
-      "Happy Retire",
+      "Happiness Never Retires",
       "คอนโดหลังเกษียณ",
       "คอนโดผู้สูงอายุ",
       "คอนโดพร้อมอยู่",
     ],
     ogImage: {
-      src: "/images/og-image.jpg",
+      src: "/images/happiness-never-retires_og.webp",
       alt: "AssetWise Happy Retire",
       width: 1200,
       height: 630,

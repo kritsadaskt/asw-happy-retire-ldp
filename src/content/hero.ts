@@ -13,10 +13,17 @@ import type {
 export const hero = {
 
   desktop: {
-    src: "/images/mockup-hero-desktop.webp",
-    alt: "AssetWise - Happy Retire",
+    src: "/images/happiness-never-retires_banner-d.webp",
+    alt: "AssetWise - Happiness Never Retires",
     width: 1920,
-    height: 1024,
+    height: 800,
+  } satisfies ImageContent,
+
+  mobile: {
+    src: "/images/happiness-never-retires_banner-m.webp",
+    alt: "AssetWise - Happiness Never Retires",
+    width: 1040,
+    height: 1040,
   } satisfies ImageContent,
 
   
