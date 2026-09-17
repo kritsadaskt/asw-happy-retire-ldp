@@ -15,6 +15,7 @@ import {
 import { Icon } from "@/components/ui/Icon";
 import { register as content } from "@/content/register";
 import { site } from "@/content/site";
+import { withBasePath } from "@/lib/paths";
 import {
   registerSchema,
   type RegisterInput,
@@ -51,7 +52,7 @@ export function RegisterForm() {
   const onSubmit = handleSubmit(async (values) => {
     setSubmitError(null);
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(withBasePath("/api/register"), {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(values),
