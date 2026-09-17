@@ -85,6 +85,9 @@ export const projectsSection = {
   },
 
   listTitle: "โครงการในโซนนี้",
+  loadingProjects: "กำลังโหลดโครงการ...",
+  loadError: "ไม่สามารถโหลดรายการโครงการได้ กรุณาลองใหม่อีกครั้ง",
+  retryLabel: "ลองใหม่",
   emptyState: "ยังไม่มีโครงการในโซนนี้ กรุณาเลือกโซนอื่น",
   projectCountSuffix: "โครงการ",
   viewProjectLabel: "ดูรายละเอียดโครงการ",
