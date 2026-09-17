@@ -54,7 +54,7 @@ export const site = {
       "คอนโดพร้อมอยู่",
     ],
     ogImage: {
-      src: "/images/happiness-never-retires_og.webp",
+      src: "/images/happiness-never-retires_og.jpg",
       alt: "AssetWise Happy Retire",
       width: 1200,
       height: 630,

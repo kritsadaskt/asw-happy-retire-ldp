@@ -32,6 +32,7 @@ type SharedProps = {
   size?: Size;
   icon?: IconKey;
   trailingIcon?: IconKey;
+  loading?: boolean;
   className?: string;
   children: ReactNode;
 };
@@ -47,13 +48,18 @@ export function buttonClass({
 function Inner({
   icon,
   trailingIcon,
+  loading,
   children,
-}: Pick<SharedProps, "icon" | "trailingIcon" | "children">) {
+}: Pick<SharedProps, "icon" | "trailingIcon" | "loading" | "children">) {
   return (
     <>
-      {icon ? <Icon name={icon} className="text-[0.9em]" /> : null}
+      {loading ? (
+        <Icon name="spinner" className="animate-spin text-[0.9em]" />
+      ) : icon ? (
+        <Icon name={icon} className="text-[0.9em]" />
+      ) : null}
       <span>{children}</span>
-      {trailingIcon ? (
+      {!loading && trailingIcon ? (
         <Icon
           name={trailingIcon}
           className="text-[0.85em] transition-transform duration-200 group-hover:translate-x-1"
@@ -71,13 +77,20 @@ export function Button({
   size,
   icon,
   trailingIcon,
+  loading,
   className,
   children,
+  disabled,
   ...rest
 }: ButtonProps) {
   return (
-    <button className={buttonClass({ variant, size, className })} {...rest}>
-      <Inner icon={icon} trailingIcon={trailingIcon}>
+    <button
+      className={buttonClass({ variant, size, className })}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
+      {...rest}
+    >
+      <Inner icon={icon} trailingIcon={trailingIcon} loading={loading}>
         {children}
       </Inner>
     </button>
