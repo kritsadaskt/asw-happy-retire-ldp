@@ -29,10 +29,18 @@ export async function POST(request: Request) {
   }
 
   const result = await submitLeadToCis(parsed.data);
+  const debug =
+    resolveCisConfig().environment === "production"
+      ? {}
+      : {
+          cisPayload: result.payload,
+          cisStatus: result.httpStatus ?? null,
+          cisBody: result.detail ?? null,
+        };
 
   switch (result.status) {
     case "delivered":
-      return NextResponse.json({ ok: true, delivered: true });
+      return NextResponse.json({ ok: true, delivered: true, ...debug });
 
     case "not-configured": {
       const { environment } = resolveCisConfig();
@@ -54,7 +62,7 @@ export async function POST(request: Request) {
         "[register] CIS endpoint is not configured — lead accepted locally only",
         { fullName: parsed.data.fullName, phone: parsed.data.phone },
       );
-      return NextResponse.json({ ok: true, delivered: false });
+      return NextResponse.json({ ok: true, delivered: false, ...debug });
     }
 
     case "rejected":
@@ -63,14 +71,22 @@ export async function POST(request: Request) {
         detail: result.detail,
       });
       return NextResponse.json(
-        { ok: false, message: registerContent.errors.submitFailed },
+        {
+          ok: false,
+          message: registerContent.errors.submitFailed,
+          ...debug,
+        },
         { status: 502 },
       );
 
     case "unreachable":
       console.error("[register] CIS is unreachable", result.detail);
       return NextResponse.json(
-        { ok: false, message: registerContent.errors.submitFailed },
+        {
+          ok: false,
+          message: registerContent.errors.submitFailed,
+          ...debug,
+        },
         { status: 504 },
       );
   }
