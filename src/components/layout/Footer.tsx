@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import { Icon } from "@/components/ui/Icon";
+import { PublicImage } from "@/components/ui/PublicImage";
 import { footer } from "@/content/footer";
 import { site } from "@/content/site";
 
@@ -8,7 +7,7 @@ export function Footer() {
   return (
     <footer id="contact" className="scroll-mt-24 border-t border-navy/10 bg-white">
       <div className="shell flex flex-col items-center gap-6 py-8 lg:flex-row lg:justify-between lg:gap-8 lg:py-6">
-        <Image
+        <PublicImage
           src={site.logo.src}
           alt={site.logo.alt}
           width={site.logo.width}

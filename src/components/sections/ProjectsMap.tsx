@@ -1,11 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { PublicImage } from "@/components/ui/PublicImage";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import {
   projectsSection as content,
@@ -196,7 +196,7 @@ export function ProjectsMap({ projects }: { projects: Project[] }) {
               onSelect={setActiveId}
             />
           ) : (
-            <Image
+            <PublicImage
               src={content.mapFallback.image.src}
               alt={content.mapFallback.image.alt}
               width={content.mapFallback.image.width}

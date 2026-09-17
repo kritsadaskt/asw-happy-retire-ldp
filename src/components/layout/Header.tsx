@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { PublicImage } from "@/components/ui/PublicImage";
 import { mainNav, navCta } from "@/content/nav";
 import { site } from "@/content/site";
 import { cn } from "@/lib/cn";
@@ -41,7 +41,7 @@ export function Header() {
             className="shrink-0"
             aria-label={`${site.brandName} ${site.campaignName}`}
           >
-            <Image
+            <PublicImage
               src={site.logo.src}
               alt={site.logo.alt}
               width={site.logo.width}
