@@ -35,6 +35,15 @@ export const metadata: Metadata = {
     description: site.seo.description,
     images: [absoluteUrl(site.seo.ogImage.src)],
   },
+  icons: {
+    icon: [
+      {
+        url: withBasePath("/favicon.ico"),
+        type: "image/x-icon",
+        sizes: "any",
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
