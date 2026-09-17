@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { register as registerContent } from "@/content/register";
-import { resolveN8nConfig, submitLeadToN8n } from "@/lib/n8n";
+import { resolveCisConfig, submitLeadToCis } from "@/lib/cis";
 import { registerSchema } from "@/lib/validation";
 
 export const runtime = "nodejs";
@@ -28,21 +28,21 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = await submitLeadToN8n(parsed.data);
+  const result = await submitLeadToCis(parsed.data);
 
   switch (result.status) {
     case "delivered":
       return NextResponse.json({ ok: true, delivered: true });
 
     case "not-configured": {
-      const { environment } = resolveN8nConfig();
+      const { environment } = resolveCisConfig();
 
-      // On a preview/dev deploy without a webhook the form still has to work
-      // end to end, so the lead is logged and the visitor continues to the
-      // thank-you page. In production a missing webhook is a real fault.
+      // On a preview/dev deploy without CIS credentials the form still has to
+      // work end to end, so the lead is logged and the visitor continues to
+      // the thank-you page. In production a missing endpoint is a real fault.
       if (environment === "production") {
         console.error(
-          "[register] N8N_WEBHOOK_URL is not set — lead was not delivered",
+          "[register] CIS_ENDPOINT_PROD or CIS_API_KEY is not set — lead was not delivered",
         );
         return NextResponse.json(
           { ok: false, message: registerContent.errors.submitFailed },
@@ -51,14 +51,14 @@ export async function POST(request: Request) {
       }
 
       console.warn(
-        "[register] n8n webhook is not configured — lead accepted locally only",
+        "[register] CIS endpoint is not configured — lead accepted locally only",
         { fullName: parsed.data.fullName, phone: parsed.data.phone },
       );
       return NextResponse.json({ ok: true, delivered: false });
     }
 
     case "rejected":
-      console.error("[register] n8n rejected the lead", {
+      console.error("[register] CIS rejected the lead", {
         httpStatus: result.httpStatus,
         detail: result.detail,
       });
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
       );
 
     case "unreachable":
-      console.error("[register] n8n is unreachable", result.detail);
+      console.error("[register] CIS is unreachable", result.detail);
       return NextResponse.json(
         { ok: false, message: registerContent.errors.submitFailed },
         { status: 504 },

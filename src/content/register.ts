@@ -37,6 +37,13 @@ export const register = {
       required: true,
     } satisfies FieldContent,
 
+    project: {
+      label: "โครงการที่สนใจ",
+      placeholder: "เลือกโครงการ",
+      icon: "building",
+      required: true,
+    } satisfies FieldContent,
+
     residenceType: {
       label: "รูปแบบที่อยู่อาศัยที่สนใจ",
       placeholder: "เลือกประเภท",
@@ -80,6 +87,8 @@ export const register = {
     fullNameTooShort: "กรุณากรอกชื่อ - นามสกุล ให้ครบถ้วน",
     phoneRequired: "กรุณากรอกเบอร์โทรศัพท์",
     phoneInvalid: "รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง (ตัวเลข 9 - 10 หลัก)",
+    projectRequired: "กรุณาเลือกโครงการที่สนใจ",
+    projectInvalid: "กรุณาเลือกโครงการจากรายการ",
     visitDateInvalid: "กรุณาเลือกวันที่ให้ถูกต้อง",
     visitDatePast: "กรุณาเลือกวันที่ตั้งแต่วันนี้เป็นต้นไป",
     termsRequired: "กรุณายอมรับข้อมูลและเงื่อนไขโปรโมชัน",

@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -15,7 +15,9 @@ import {
 import { Icon } from "@/components/ui/Icon";
 import { register as content } from "@/content/register";
 import { site } from "@/content/site";
+import type { ProjectSelectGroup } from "@/lib/projects";
 import { withBasePath } from "@/lib/paths";
+import { captureUtmParams } from "@/lib/utm";
 import {
   registerSchema,
   type RegisterInput,
@@ -24,7 +26,11 @@ import {
 
 const fields = content.fields;
 
-export function RegisterForm() {
+export function RegisterForm({
+  projectGroups,
+}: {
+  projectGroups: ProjectSelectGroup[];
+}) {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSending, setIsSending] = useState(false);
@@ -40,6 +46,7 @@ export function RegisterForm() {
     defaultValues: {
       fullName: "",
       phone: "",
+      project: "",
       residenceType: "",
       budget: "",
       visitDate: "",
@@ -50,6 +57,10 @@ export function RegisterForm() {
   const acceptedTerms = watch("acceptedTerms");
   const phoneField = registerField("phone");
 
+  useEffect(() => {
+    captureUtmParams();
+  }, []);
+
   // ค่าที่กรอกไว้จะไม่ถูกล้างเมื่อส่งไม่สำเร็จ
   const onSubmit = handleSubmit(async (values) => {
     setSubmitError(null);
@@ -58,7 +69,7 @@ export function RegisterForm() {
       const response = await fetch(withBasePath("/api/register"), {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, ...captureUtmParams() }),
       });
 
       const payload = (await response.json().catch(() => null)) as
@@ -163,6 +174,18 @@ export function RegisterForm() {
                     .slice(0, 10);
                   phoneField.onChange(event);
                 }}
+              />
+
+              <SelectField
+                id="project"
+                label={fields.project.label}
+                icon={fields.project.icon}
+                placeholder={fields.project.placeholder}
+                required={fields.project.required}
+                requiredHint={content.requiredHint}
+                groups={projectGroups}
+                error={errors.project?.message}
+                {...registerField("project")}
               />
 
               <SelectField
