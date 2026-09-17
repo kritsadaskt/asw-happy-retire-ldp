@@ -1,8 +1,8 @@
 /**
  * The app is served from https://assetwise.co.th/happyretire in production.
- * `next/link`, `next/image` and route handlers get the `basePath` prefix
- * automatically — use this helper for the handful of places that build a URL
- * by hand (plain <img>, CSS url(), og:image, JSON-LD, ...).
+ * `next/link` and route handlers get the `basePath` prefix automatically.
+ * String `src` on `next/image` does **not** — use `PublicImage` (or this
+ * helper) for files in `public/`, plus og:image, JSON-LD, and CSS url().
  */
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 

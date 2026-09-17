@@ -189,8 +189,9 @@ npx wrangler deploy deploy/cloudflare-worker.js --name happyretire-proxy
 - Worker ต้อง **ส่ง path เดิมไปทั้งก้อน** (`/happyretire/...` → `https://<project>.vercel.app/happyretire/...`)
   **ไม่ต้อง** strip prefix เพราะ Next.js รอ prefix นี้อยู่แล้ว
 - ไม่แคช HTML และ `/happyretire/api/*` แต่แคช `/happyretire/_next/static/*` ได้ยาว ๆ (มีตั้งไว้ในสคริปต์แล้ว)
-- ลิงก์ที่เขียนเองโดยไม่ผ่าน `<Link>` / `next/image` (เช่น og:image, JSON-LD)
-  ให้ผ่าน helper `withBasePath()` / `absoluteUrl()` ใน `src/lib/paths.ts`
+- ลิงก์ที่เขียนเองโดยไม่ผ่าน `<Link>` (เช่น og:image, JSON-LD) และรูปจาก `public/`
+  ให้ผ่าน `PublicImage` / `withBasePath()` / `absoluteUrl()` ใน `src/lib/paths.ts`
+  (`next/image` ไม่เติม `basePath` ให้ string `src` โดยอัตโนมัติ)
 
 ---
 
