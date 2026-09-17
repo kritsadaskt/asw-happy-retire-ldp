@@ -7,17 +7,16 @@ import type {
   ZoneId,
 } from "@/content/projects";
 
-const PROJECTS_API =
-  process.env.ASW_PROJECTS_API_URL?.trim() ||
+export const PROJECTS_API =
+  process.env.NEXT_PUBLIC_ASW_PROJECTS_API_URL?.trim() ||
   "https://assetwise.co.th/wp-json/wp/v2/all-projects";
 
-const REVALIDATE_SECONDS = 60 * 60;
-const FETCH_TIMEOUT_MS = 8_000;
+const FETCH_TIMEOUT_MS = 20_000;
 
 /** พิกัดกลางกรุงเทพฯ ที่ API ใส่ไว้เมื่อยังไม่มีที่ตั้งจริง */
 const PLACEHOLDER_CENTER = { lat: 13.7563, lng: 100.5018 };
 
-const FALLBACK_URL = "https://www.assetwise.co.th/project";
+const FALLBACK_URL = "https://www.assetwise.co.th/";
 
 type MapZone = Exclude<ZoneId, "all">;
 
@@ -249,45 +248,50 @@ function toMapProject(item: WpProject): Project | null {
   };
 }
 
-export async function getMapProjects(): Promise<Project[]> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+export function parseMapProjects(payload: unknown): Project[] {
+  if (!Array.isArray(payload)) {
+    throw new Error("projects API returned a non-array payload");
+  }
 
-  try {
-    const response = await fetch(PROJECTS_API, {
-      headers: { Accept: "application/json" },
-      next: { revalidate: REVALIDATE_SECONDS },
-      signal: controller.signal,
-    });
-
-    if (!response.ok) {
-      console.error(`[projects] API ${response.status} ${response.statusText}`);
-      return [];
-    }
-
-    const payload: unknown = await response.json();
-    if (!Array.isArray(payload)) return [];
-
-    const projects = payload.flatMap((item) => {
+  return payload
+    .flatMap((item) => {
       const parsed = wpProjectSchema.safeParse(item);
       if (!parsed.success) return [];
       const project = toMapProject(parsed.data);
       return project ? [project] : [];
-    });
-
-    return projects.sort((a, b) => {
+    })
+    .sort((a, b) => {
       const rankA = STATUS_RANK[a.status] ?? 2;
       const rankB = STATUS_RANK[b.status] ?? 2;
       if (rankA !== rankB) return rankA - rankB;
       return a.name.localeCompare(b.name, "th");
     });
-  } catch (error) {
-    console.error(
-      "[projects] failed to load all-projects",
-      error instanceof Error ? error.message : error,
-    );
-    return [];
+}
+
+/**
+ * Load pins in the browser. Server-side fetch from Vercel is blocked or timed
+ * out by Cloudflare in front of assetwise.co.th, which used to render an empty
+ * map with no error.
+ */
+export async function fetchMapProjects(signal?: AbortSignal): Promise<Project[]> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const onAbort = () => controller.abort();
+  signal?.addEventListener("abort", onAbort);
+
+  try {
+    const response = await fetch(PROJECTS_API, {
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`projects API ${response.status} ${response.statusText}`);
+    }
+
+    return parseMapProjects(await response.json());
   } finally {
     clearTimeout(timeout);
+    signal?.removeEventListener("abort", onAbort);
   }
 }
