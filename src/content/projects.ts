@@ -34,6 +34,8 @@ export type Project = {
   priceFrom: string;
   /** ลิงก์ไปหน้าโครงการจริง เปิดในแท็บใหม่ */
   url: string;
+  /** รหัสโครงการใน CIS (`cis_project_id` จาก snapshot) */
+  cisProjectId: number | null;
   /** พิกัดจาก snapshot `src/data/all-projects.json` */
   position: { lat: number; lng: number };
 };

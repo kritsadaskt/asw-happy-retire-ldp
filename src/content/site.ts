@@ -40,7 +40,7 @@ export const site = {
     external: true,
   } satisfies IconLinkContent,
 
-  allProjectsUrl: "https://www.assetwise.co.th/project",
+  allProjectsUrl: "https://www.assetwise.co.th/",
 
   seo: {
     title: "Happiness Never Retires | ความสุข..ไม่มีวันเกษียณ",

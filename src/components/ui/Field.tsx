@@ -129,7 +129,11 @@ type SelectFieldProps = Omit<ComponentProps<"select">, "id" | "className"> & {
   label: string;
   icon: IconKey;
   placeholder: string;
-  options: readonly { value: string; label: string }[];
+  options?: readonly { value: string; label: string }[];
+  groups?: readonly {
+    label: string;
+    options: readonly { value: string; label: string }[];
+  }[];
   requiredHint?: string;
   error?: string;
   className?: string;
@@ -141,7 +145,8 @@ export function SelectField({
   label,
   icon,
   placeholder,
-  options,
+  options = [],
+  groups,
   required,
   requiredHint,
   error,
@@ -169,11 +174,21 @@ export function SelectField({
         {...rest}
       >
         <option value="">{placeholder}</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        {groups?.length
+          ? groups.map((group) => (
+              <optgroup key={group.label} label={group.label}>
+                {group.options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </optgroup>
+            ))
+          : options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
       </select>
     </FieldShell>
   );

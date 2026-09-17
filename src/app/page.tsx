@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { HeroBanner } from "@/components/sections/HeroBanner";
 import { ProjectsMap } from "@/components/sections/ProjectsMap";
 import { RegisterForm } from "@/components/sections/RegisterForm";
-import { mapProjects } from "@/lib/projects";
+import { getProjectSelectGroups, mapProjects } from "@/lib/projects";
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroBanner />
-        <RegisterForm />
+        <RegisterForm projectGroups={getProjectSelectGroups(mapProjects)} />
         <ProjectsMap projects={mapProjects} />
       </main>
       <Footer />

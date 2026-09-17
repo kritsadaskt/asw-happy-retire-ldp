@@ -4,8 +4,10 @@ import type {
   Project,
   ProjectStatus,
   ProjectType,
+  Zone,
   ZoneId,
 } from "@/content/projects";
+import { zones } from "@/content/projects";
 import allProjects from "@/data/all-projects.json";
 
 /** พิกัดกลางกรุงเทพฯ ที่ API ใส่ไว้เมื่อยังไม่มีที่ตั้งจริง */
@@ -36,6 +38,7 @@ const wpProjectSchema = z.object({
     longitude: z.union([z.string(), z.number()]),
   }),
   location: wpLocationSchema.optional(),
+  cis_project_id: z.union([z.string(), z.number()]).optional(),
   price: z.union([z.string(), z.number()]).optional().default(""),
   address: z
     .object({
@@ -166,6 +169,11 @@ function toProjectType(type: string): ProjectType {
   return type === "house" ? "house" : "condominium";
 }
 
+function toCisProjectId(value: string | number | undefined): number | null {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : null;
+}
+
 function toMapProject(item: WpProject): Project | null {
   const zone = ZONE_BY_PROJECT_KEY[item.key];
   if (!zone) return null;
@@ -187,6 +195,7 @@ function toMapProject(item: WpProject): Project | null {
     location: projectLocation(item),
     priceFrom: formatPrice(item.price),
     url: item.webLink.trim() || FALLBACK_URL,
+    cisProjectId: toCisProjectId(item.cis_project_id),
     position: { lat, lng },
   };
 }
@@ -216,3 +225,35 @@ export function parseMapProjects(payload: unknown): Project[] {
  * `src/data/all-projects.json` (copy of `/wp-json/wp/v2/all-projects`).
  */
 export const mapProjects = parseMapProjects(allProjects);
+
+export type ProjectSelectGroup = {
+  label: string;
+  options: { value: string; label: string }[];
+};
+
+export function getProjectSelectGroups(
+  projects: Project[],
+): ProjectSelectGroup[] {
+  const byZone = new Map<Exclude<ZoneId, "all">, { value: string; label: string }[]>();
+
+  for (const project of [...projects].sort((a, b) =>
+    a.name.localeCompare(b.name, "th"),
+  )) {
+    const list = byZone.get(project.zone) ?? [];
+    if (!project.cisProjectId) continue;
+    list.push({ value: project.id, label: project.name });
+    byZone.set(project.zone, list);
+  }
+
+  return zones
+    .filter((zone): zone is Zone & { id: Exclude<ZoneId, "all"> } => zone.id !== "all")
+    .map((zone) => ({
+      label: zone.label,
+      options: byZone.get(zone.id) ?? [],
+    }))
+    .filter((group) => group.options.length > 0);
+}
+
+export function findMapProject(id: string, projects: Project[] = mapProjects) {
+  return projects.find((project) => project.id === id) ?? null;
+}
