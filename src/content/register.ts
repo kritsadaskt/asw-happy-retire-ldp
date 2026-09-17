@@ -82,9 +82,16 @@ export const register = {
     phoneInvalid: "รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง (ตัวเลข 9 - 10 หลัก)",
     visitDateInvalid: "กรุณาเลือกวันที่ให้ถูกต้อง",
     visitDatePast: "กรุณาเลือกวันที่ตั้งแต่วันนี้เป็นต้นไป",
+    termsRequired: "กรุณายอมรับข้อมูลและเงื่อนไขโปรโมชัน",
     submitFailed:
       "ขออภัย ระบบไม่สามารถส่งข้อมูลได้ในขณะนี้ กรุณาลองอีกครั้ง หรือโทร 02-168-0000",
     network: "การเชื่อมต่อขัดข้อง กรุณาตรวจสอบอินเทอร์เน็ตแล้วลองอีกครั้ง",
+  },
+
+  terms: {
+    before: "ฉันได้อ่านและยอมรับ",
+    linkLabel: "ข้อมูลและเงื่อนไขโปรโมชัน",
+    href: "https://assetwise.co.th/terms-and-conditions/happiness-never-retires/",
   },
 
   pdpa: {

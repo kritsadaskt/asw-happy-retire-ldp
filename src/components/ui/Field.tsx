@@ -179,6 +179,56 @@ export function SelectField({
   );
 }
 
+type CheckboxFieldProps = Omit<
+  ComponentProps<"input">,
+  "id" | "type" | "className"
+> & {
+  id: string;
+  error?: string;
+  children: ReactNode;
+  className?: string;
+  ref?: Ref<HTMLInputElement>;
+};
+
+export function CheckboxField({
+  id,
+  error,
+  children,
+  className,
+  ...rest
+}: CheckboxFieldProps) {
+  return (
+    <div className={className}>
+      <div className="flex items-start gap-3">
+        <input
+          id={id}
+          type="checkbox"
+          className={cn(
+            "size-4 shrink-0 cursor-pointer rounded border-navy/30 text-navy accent-navy",
+            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
+          )}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? `${id}-error` : undefined}
+          {...rest}
+        />
+        <div className="min-w-0 text-2xs leading-snug text-navy/70">
+          {children}
+        </div>
+      </div>
+
+      {error ? (
+        <p
+          id={`${id}-error`}
+          role="alert"
+          className="mt-1.5 pl-7 text-2xs font-medium text-red-600"
+        >
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 type DateFieldProps = Omit<TextFieldProps, "type"> & { placeholder?: string };
 
 /**

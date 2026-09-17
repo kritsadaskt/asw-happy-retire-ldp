@@ -1,9 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
-import { Button, ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { PublicImage } from "@/components/ui/PublicImage";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -15,9 +15,6 @@ import {
   type ZoneId,
 } from "@/content/projects";
 import { cn } from "@/lib/cn";
-import { fetchMapProjects } from "@/lib/projects";
-
-type LoadState = "loading" | "ready" | "error";
 
 const ProjectsMapCanvas = dynamic(
   () => import("@/components/sections/ProjectsMapCanvas"),
@@ -34,31 +31,9 @@ const ProjectsMapCanvas = dynamic(
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY?.trim() ?? "";
 const mapId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID?.trim() || null;
 
-export function ProjectsMap() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loadState, setLoadState] = useState<LoadState>("loading");
-  const [retryCount, setRetryCount] = useState(0);
+export function ProjectsMap({ projects }: { projects: Project[] }) {
   const [zone, setZone] = useState<ZoneId>("all");
   const [activeId, setActiveId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoadState("loading");
-
-    fetchMapProjects(controller.signal)
-      .then((items) => {
-        setProjects(items);
-        setLoadState("ready");
-      })
-      .catch((error: unknown) => {
-        if (controller.signal.aborted) return;
-        console.error("[projects] failed to load all-projects", error);
-        setProjects([]);
-        setLoadState("error");
-      });
-
-    return () => controller.abort();
-  }, [retryCount]);
 
   const visibleProjects = useMemo(
     () =>
@@ -68,11 +43,7 @@ export function ProjectsMap() {
     [projects, zone],
   );
 
-  const listedProjects = useMemo(
-    () =>
-      visibleProjects.filter((project) => project.status === "ready_project"),
-    [visibleProjects],
-  );
+  const listedProjects = visibleProjects;
 
   const selectZone = (next: ZoneId) => {
     setZone(next);
@@ -208,23 +179,6 @@ export function ProjectsMap() {
             </div>
           </div>
         )}
-
-        {loadState === "error" ? (
-          <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-navy/10 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-start gap-3">
-              <Icon name="map" className="mt-1 shrink-0 text-navy/60" />
-              <p className="text-sm font-bold text-navy">{content.loadError}</p>
-            </div>
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={() => setRetryCount((count) => count + 1)}
-            >
-              {content.retryLabel}
-            </Button>
-          </div>
-        ) : null}
       </div>
 
       <div className="relative mt-6 lg:mt-8">
@@ -261,22 +215,12 @@ export function ProjectsMap() {
                     {content.listTitle}
                   </p>
                   <p className="text-2xs text-navy/50">
-                    {loadState === "ready"
-                      ? `${listedProjects.length} ${content.projectCountSuffix}`
-                      : "—"}
+                    {`${listedProjects.length} ${content.projectCountSuffix}`}
                   </p>
                 </div>
 
                 <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-3 pt-1">
-                  {loadState === "loading" ? (
-                    <p className="rounded-2xl bg-cream-soft px-4 py-5 text-center text-xs text-navy/60">
-                      {content.loadingProjects}
-                    </p>
-                  ) : loadState === "error" ? (
-                    <p className="rounded-2xl bg-cream-soft px-4 py-5 text-center text-xs text-navy/60">
-                      {content.loadError}
-                    </p>
-                  ) : listedProjects.length === 0 ? (
+                  {listedProjects.length === 0 ? (
                     <p className="rounded-2xl bg-cream-soft px-4 py-5 text-center text-xs text-navy/60">
                       {content.emptyState}
                     </p>
@@ -299,15 +243,7 @@ export function ProjectsMap() {
 
             <div className="pointer-events-auto absolute inset-x-0 bottom-0 lg:hidden">
               <div className="flex snap-x gap-3 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {loadState === "loading" ? (
-                  <p className="w-full rounded-2xl bg-white px-4 py-4 text-center text-xs text-navy/60 shadow-float">
-                    {content.loadingProjects}
-                  </p>
-                ) : loadState === "error" ? (
-                  <p className="w-full rounded-2xl bg-white px-4 py-4 text-center text-xs text-navy/60 shadow-float">
-                    {content.loadError}
-                  </p>
-                ) : listedProjects.length === 0 ? (
+                {listedProjects.length === 0 ? (
                   <p className="w-full rounded-2xl bg-white px-4 py-4 text-center text-xs text-navy/60 shadow-float">
                     {content.emptyState}
                   </p>

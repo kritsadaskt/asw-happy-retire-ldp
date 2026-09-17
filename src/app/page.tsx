@@ -3,8 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { HeroBanner } from "@/components/sections/HeroBanner";
 import { ProjectsMap } from "@/components/sections/ProjectsMap";
 import { RegisterForm } from "@/components/sections/RegisterForm";
-
-export const revalidate = 3600;
+import { mapProjects } from "@/lib/projects";
 
 export default function HomePage() {
   return (
@@ -13,7 +12,7 @@ export default function HomePage() {
       <main>
         <HeroBanner />
         <RegisterForm />
-        <ProjectsMap />
+        <ProjectsMap projects={mapProjects} />
       </main>
       <Footer />
     </>

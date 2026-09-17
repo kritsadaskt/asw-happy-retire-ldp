@@ -6,12 +6,7 @@ import type {
   ProjectType,
   ZoneId,
 } from "@/content/projects";
-
-export const PROJECTS_API =
-  process.env.NEXT_PUBLIC_ASW_PROJECTS_API_URL?.trim() ||
-  "https://assetwise.co.th/wp-json/wp/v2/all-projects";
-
-const FETCH_TIMEOUT_MS = 20_000;
+import allProjects from "@/data/all-projects.json";
 
 /** พิกัดกลางกรุงเทพฯ ที่ API ใส่ไว้เมื่อยังไม่มีที่ตั้งจริง */
 const PLACEHOLDER_CENTER = { lat: 13.7563, lng: 100.5018 };
@@ -52,115 +47,59 @@ const wpProjectSchema = z.object({
 
 type WpProject = z.infer<typeof wpProjectSchema>;
 
-const ZONE_BY_LOCATION_KEY: Record<string, MapZone> = {
-  rangsit: "rangsit-pathumthani",
-  "chaeng-phahon": "srisaman-chaengwattana",
-  "donmueang-chaengwatthana": "srisaman-chaengwattana",
-  "pak-kret": "srisaman-chaengwattana",
-  phaholyothin: "kaset-phaholyothin",
-  "เกษตร-ศรีปทุม": "kaset-phaholyothin",
-  ramintra: "kaset-phaholyothin",
-  "ramintra-watcharapol": "kaset-phaholyothin",
-  ratchada: "ratchada-ladprao",
-  ladprao: "ratchada-ladprao",
-  "ลาดพร้าว-วังหิน": "ratchada-ladprao",
-  bangpho: "ratchada-ladprao",
-  บางโพ: "ratchada-ladprao",
-  sukhumvit: "sukhumvit-bangna",
-  bangna: "sukhumvit-bangna",
-  bangmod: "sukhumvit-bangna",
-  onnut: "sukhumvit-bangna",
-  thipphawanstation: "sukhumvit-bangna",
-  ladkrabang: "ladkrabang-srinakarin",
-  srinakarin: "ladkrabang-srinakarin",
-  minburi: "ladkrabang-srinakarin",
-  มีนบุรี: "ladkrabang-srinakarin",
-  ramkhamhaeng: "ladkrabang-srinakarin",
-  praditmanutham: "ladkrabang-srinakarin",
-  salaya: "salaya-nakhonpathom",
-  ศาลายา: "salaya-nakhonpathom",
-  "nakhon-pathom": "salaya-nakhonpathom",
-  boromratchachonnani: "salaya-nakhonpathom",
-  pattaya: "eec",
-  bangsaen: "eec",
-  rayong: "eec",
-  sriracha: "eec",
+/** โซนตามลิสต์ Location ของแคมเปญ — โครงการที่ไม่อยู่ในนี้จะไม่แสดงบนแผนที่ */
+const ZONE_BY_PROJECT_KEY: Record<string, MapZone> = {
+  "kave-embryo": "rangsit-pathumthani",
+  "atmoz-kanaal-rangsit": "rangsit-pathumthani",
+  "modiz-avantgarde": "rangsit-pathumthani",
+  kavalon: "rangsit-pathumthani",
+  "kave-wonderland": "rangsit-pathumthani",
+  "kave-carnival-rangsit": "rangsit-pathumthani",
+  "esta-rangsit-klong2": "rangsit-pathumthani",
+  "the-arbor-donmueang": "rangsit-pathumthani",
+  "wisehouse-rangsit": "rangsit-pathumthani",
+
+  "atmoz-portrait-srisaman": "srisaman-chaengwattana",
+
+  "modiz-vault-kaset-sripatum": "kaset-phaholyothin",
+  "kave-ally-chaengwattana": "kaset-phaholyothin",
+
+  "atmoz-palacio-ladprao-wanghin": "ratchada-ladprao",
+  maroonratchada32: "ratchada-ladprao",
+  "kave-playground": "ratchada-ladprao",
+  "modiz-collection-bangpho": "ratchada-ladprao",
+
+  "modiz-sukhumvit50": "sukhumvit-bangna",
+  "atmoz-oasis-onnut": "sukhumvit-bangna",
+  "atmoz-bangna": "sukhumvit-bangna",
+  "atmoz-de-sol-thipphawanstation": "sukhumvit-bangna",
+
+  "atmoz-season-ladkrabang": "ladkrabang-srinakarin",
+  "atmoz-flow-minburi": "ladkrabang-srinakarin",
+  "modiz-rhyme": "ladkrabang-srinakarin",
+  "modiz-voyage-srinakarin": "ladkrabang-srinakarin",
+
+  "kave-pop-salaya": "salaya-nakhonpathom",
+  "kave-genesis": "salaya-nakhonpathom",
+  "kave-luminous-bangmod": "salaya-nakhonpathom",
+  "esta-serenity-boromratchachonnani": "salaya-nakhonpathom",
+  "chann-theriverside": "salaya-nakhonpathom",
+
+  "kave-coco-bangsaen": "eec",
+  "kave-univers-bangsaen": "eec",
+  "atmoz-serene-sriracha": "eec",
+  "atmoz-canvas-rayong": "eec",
+  "aquarous-jomtien-pattaya": "eec",
+
+  "the-arbor-ramintra": "ramintra-watcharapol",
+  "the-honor-yothinpattana": "ramintra-watcharapol",
 };
 
-const ZONE_BY_LOCATION_NAME: Record<string, MapZone> = {
-  รังสิต: "rangsit-pathumthani",
-  ปากเกร็ด: "srisaman-chaengwattana",
-  "แจ้งวัฒนะ-พหลโยธิน": "srisaman-chaengwattana",
-  "ดอนเมือง-แจ้งวัฒนะ": "srisaman-chaengwattana",
-  พหลโยธิน: "kaset-phaholyothin",
-  "เกษตร - ศรีปทุม": "kaset-phaholyothin",
-  "เกษตร-ศรีปทุม": "kaset-phaholyothin",
-  รามอินทรา: "kaset-phaholyothin",
-  "รามอินทรา-วัชรพล": "kaset-phaholyothin",
-  รัชดา: "ratchada-ladprao",
-  ลาดพร้าว: "ratchada-ladprao",
-  "ลาดพร้าว - วังหิน": "ratchada-ladprao",
-  "ติด mrt บางโพ": "ratchada-ladprao",
-  สุขุมวิท: "sukhumvit-bangna",
-  บางนา: "sukhumvit-bangna",
-  บางมด: "sukhumvit-bangna",
-  อ่อนนุช: "sukhumvit-bangna",
-  ทิพวัล: "sukhumvit-bangna",
-  ลาดกระบัง: "ladkrabang-srinakarin",
-  ศรีนครินทร์: "ladkrabang-srinakarin",
-  มีนบุรี: "ladkrabang-srinakarin",
-  รามคำแหง: "ladkrabang-srinakarin",
-  ประดิษฐ์มนูธรรม: "ladkrabang-srinakarin",
-  ศาลายา: "salaya-nakhonpathom",
-  นครปฐม: "salaya-nakhonpathom",
-  บรมราชชนนี: "salaya-nakhonpathom",
-  พัทยา: "eec",
-  บางแสน: "eec",
-  ระยอง: "eec",
-  ศรีราชา: "eec",
+/** API ใส่พิกัดกลางกรุงเทพฯ ไว้เมื่อยังไม่มีที่ตั้งจริง */
+const COORDINATE_OVERRIDES: Record<string, { lat: number; lng: number }> = {
+  "esta-rangsit-klong2": { lat: 14.0164, lng: 100.6612 },
+  "wisehouse-rangsit": { lat: 13.9905, lng: 100.6082 },
 };
-
-function normalizePlace(value: string): string {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/[\u200b-\u200d\ufeff]/g, "")
-    .replace(/[\u2013\u2014\u2212]/g, "-")
-    .replace(/\s+/g, " ");
-}
-
-function decodeLocationKey(key: string): string {
-  try {
-    return decodeURIComponent(key).trim().toLowerCase();
-  } catch {
-    return key.trim().toLowerCase();
-  }
-}
-
-function zoneFromCoordinates(lat: number, lng: number): MapZone {
-  if (lat < 13.35 && lng > 100.8) return "eec";
-  if (lng < 100.4) return "salaya-nakhonpathom";
-  if (lat > 13.95) return "rangsit-pathumthani";
-  if (lat > 13.86 && lng < 100.62) return "srisaman-chaengwattana";
-  if (lat > 13.83 && lng < 100.65) return "kaset-phaholyothin";
-  if (lat < 13.72) return "sukhumvit-bangna";
-  if (lng > 100.63) return "ladkrabang-srinakarin";
-  return "ratchada-ladprao";
-}
-
-function resolveZone(item: WpProject, lat: number, lng: number): MapZone {
-  if (item.location && !Array.isArray(item.location)) {
-    if (item.location.key) {
-      const byKey = ZONE_BY_LOCATION_KEY[decodeLocationKey(item.location.key)];
-      if (byKey) return byKey;
-    }
-    if (item.location.name_th) {
-      const byName = ZONE_BY_LOCATION_NAME[normalizePlace(item.location.name_th)];
-      if (byName) return byName;
-    }
-  }
-  return zoneFromCoordinates(lat, lng);
-}
 
 const STATUS_RANK: Record<string, number> = {
   new_project: 0,
@@ -228,17 +167,21 @@ function toProjectType(type: string): ProjectType {
 }
 
 function toMapProject(item: WpProject): Project | null {
+  const zone = ZONE_BY_PROJECT_KEY[item.key];
+  if (!zone) return null;
+
   const status = toProjectStatus(item.status);
   if (!status) return null;
 
-  const lat = Number(item.coordinates.latitude);
-  const lng = Number(item.coordinates.longitude);
+  const override = COORDINATE_OVERRIDES[item.key];
+  const lat = override?.lat ?? Number(item.coordinates.latitude);
+  const lng = override?.lng ?? Number(item.coordinates.longitude);
   if (!hasRealCoordinates(lat, lng)) return null;
 
   return {
     id: item.key || String(item.id),
     name: projectName(item.title),
-    zone: resolveZone(item, lat, lng),
+    zone,
     status,
     type: toProjectType(item.type),
     location: projectLocation(item),
@@ -250,7 +193,7 @@ function toMapProject(item: WpProject): Project | null {
 
 export function parseMapProjects(payload: unknown): Project[] {
   if (!Array.isArray(payload)) {
-    throw new Error("projects API returned a non-array payload");
+    throw new Error("projects snapshot is not an array");
   }
 
   return payload
@@ -269,29 +212,7 @@ export function parseMapProjects(payload: unknown): Project[] {
 }
 
 /**
- * Load pins in the browser. Server-side fetch from Vercel is blocked or timed
- * out by Cloudflare in front of assetwise.co.th, which used to render an empty
- * map with no error.
+ * Pins for the map, parsed once from the bundled snapshot at
+ * `src/data/all-projects.json` (copy of `/wp-json/wp/v2/all-projects`).
  */
-export async function fetchMapProjects(signal?: AbortSignal): Promise<Project[]> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  const onAbort = () => controller.abort();
-  signal?.addEventListener("abort", onAbort);
-
-  try {
-    const response = await fetch(PROJECTS_API, {
-      headers: { Accept: "application/json" },
-      signal: controller.signal,
-    });
-
-    if (!response.ok) {
-      throw new Error(`projects API ${response.status} ${response.statusText}`);
-    }
-
-    return parseMapProjects(await response.json());
-  } finally {
-    clearTimeout(timeout);
-    signal?.removeEventListener("abort", onAbort);
-  }
-}
+export const mapProjects = parseMapProjects(allProjects);

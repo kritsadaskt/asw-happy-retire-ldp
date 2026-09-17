@@ -1,0 +1,1694 @@
+[
+  {
+    "id": 155528,
+    "title": "Kave Bloom Kaset",
+    "key": "kave-bloom-kaset",
+    "profileImage": false,
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-bloom-kaset/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "108C003",
+    "cis_project_id": 111,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": [],
+    "price": "",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": null
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 153611,
+    "title": "Wynn Bangmod-Prachauthit",
+    "key": "wynn-bangmod-prachauthit",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2026/06/wynn-bangmod-thumbnail.webp",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/wynn-bangmod-prachauthit/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2026/07/wynn-logo-tiny.webp",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "100C008",
+    "cis_project_id": 110,
+    "brand_name": {
+      "th": "อื่น ๆ",
+      "en": "Other"
+    },
+    "location": {
+      "name_th": "บางมด",
+      "name_en": "",
+      "key": "bangmod"
+    },
+    "price": "1.69",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": "https://maps.app.goo.gl/Ju5CH4GRyBrqTz1H8"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 144377,
+    "title": "Wise house Rangsit",
+    "key": "wisehouse-rangsit",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/12/wisehouse_thumbnail.webp",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/wisehouse-rangsit/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2025/12/wise-house_logo_hr-1.webp",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "400H009",
+    "cis_project_id": 108,
+    "brand_name": {
+      "th": "",
+      "en": ""
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "14.9",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": ""
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 136317,
+    "title": "Kave Carnival Rangsit | คอนโดรังสิต สไตล์คาร์นิเวิล",
+    "key": "kave-carnival-rangsit",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/08/kave-carnival-thumbnail.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-carnival-rangsit/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "102C024",
+    "cis_project_id": 96,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.59",
+    "coordinates": {
+      "latitude": "13.985620466805663",
+      "longitude": "100.60066820810202",
+      "mapUrl": "https://maps.app.goo.gl/taqaQX8UUpeJsMLCA"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 53957,
+    "title": "Kave Playground",
+    "key": "kave-playground",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/05/kave-playground_thumbnail_05082025.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-playground/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "125C001",
+    "cis_project_id": 98,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "ลาดพร้าว",
+      "name_en": "Ladprao",
+      "key": "ladprao"
+    },
+    "price": "2.39",
+    "coordinates": {
+      "latitude": "13.766681827881134",
+      "longitude": "100.61520020940904",
+      "mapUrl": "https://maps.app.goo.gl/hwCGFJubM6FNvJnT7"
+    },
+    "address": {
+      "th": "419 379 ซอยรามคำแหง 43/1 พลับพลา วังทองหลาง กรุงเทพฯ 10312",
+      "en": ""
+    }
+  },
+  {
+    "id": 104706,
+    "title": "Kave Ally Chaengwattana",
+    "key": "kave-ally-chaengwattana",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/05/KaveAlly.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-ally-chaengwattana/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "100C006",
+    "cis_project_id": 106,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "แจ้งวัฒนะ-พหลโยธิน",
+      "name_en": "Chaeng Watthana-Phahon Yothin",
+      "key": "chaeng-phahon"
+    },
+    "price": "1.99",
+    "coordinates": {
+      "latitude": "13.878714190709399",
+      "longitude": "100.59284271073737",
+      "mapUrl": "https://maps.app.goo.gl/NhA3rRDDw1GkpJBaA"
+    },
+    "address": {
+      "th": "ถ.แจ้งวัฒนะ อนุสาวรีย์ บางเขน กรุงเทพฯ 10220",
+      "en": ""
+    }
+  },
+  {
+    "id": 87052,
+    "title": "Atmoz De Sol",
+    "key": "atmoz-de-sol-thipphawanstation",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/02/Thub-AtmozDeSol--e1759088896308.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-de-sol-thipphawanstation/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "102C037",
+    "cis_project_id": 103,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ทิพวัล",
+      "name_en": "Thipphawan",
+      "key": "thipphawanstation"
+    },
+    "price": "1.69",
+    "coordinates": {
+      "latitude": "13.63703189449451",
+      "longitude": "100.6100248981511",
+      "mapUrl": "https://maps.app.goo.gl/VgHr3HyDuXq4UoQZ7"
+    },
+    "address": {
+      "th": "1010/42 ถ.เทพารักษ์ ต.เทพารักษ์ อ.เมืองสมุทรปราการ จ.สมุทรปราการ 10270",
+      "en": ""
+    }
+  },
+  {
+    "id": 70189,
+    "title": "Esta Serenity Boromratchachonnani",
+    "key": "esta-serenity-boromratchachonnani",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/02/Esta-Serenity-Boromratchachonnani.png",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/esta-serenity-boromratchachonnani/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2023/06/esta-logo.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "400H007",
+    "cis_project_id": 90,
+    "brand_name": {
+      "th": "เอสต้า",
+      "en": "Esta"
+    },
+    "location": {
+      "name_th": "บรมราชชนนี",
+      "name_en": "Boromratchachonnani",
+      "key": "boromratchachonnani"
+    },
+    "price": "4.99",
+    "coordinates": {
+      "latitude": "13.780537347048853",
+      "longitude": "100.23963400386258",
+      "mapUrl": "https://maps.app.goo.gl/hXyftim4eNKi8QUW7"
+    },
+    "address": {
+      "th": "ถ.บรมราชชนนี ต.หอมเกร็ด อ.สามพราน จ. นครปฐม,",
+      "en": ""
+    }
+  },
+  {
+    "id": 86495,
+    "title": "Kavalon คอนโดใหม่ ม.กรุงเทพ รังสิต ส่วนกลางจัดเต็ม 5 โซน กว่า 60 ฟังก์ชัน เริ่ม 1.79 ล้านบาท*",
+    "key": "kavalon",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/08/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ-1.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kavalon/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2024/09/KAVALON-LOGO-BLACK.jpg",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "128C001",
+    "cis_project_id": 104,
+    "brand_name": {
+      "th": "เควาลอน",
+      "en": "Kavalon"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.79",
+    "coordinates": {
+      "latitude": "14.042420247506243",
+      "longitude": "100.61657014110058",
+      "mapUrl": "https://maps.app.goo.gl/gK1NWXf8NBZka9Hm7"
+    },
+    "address": {
+      "th": "88 Khlong Nueng, Khlong Luang District, Pathum Thani 12120",
+      "en": ""
+    }
+  },
+  {
+    "id": 77250,
+    "title": "Aquarous Jomtien Pattaya",
+    "key": "aquarous-jomtien-pattaya",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/07/Web-banner_Aquarous-Jomtien-Pattaya_Dec2024-03.jpeg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/aquarous-jomtien-pattaya/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2024/06/AQJT_logo-1.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "126C001",
+    "cis_project_id": 97,
+    "brand_name": {
+      "th": "อะควาเรียส จอมเทียน พัทยา",
+      "en": "Aquarous Jomtien Pattaya"
+    },
+    "location": {
+      "name_th": "พัทยา",
+      "name_en": "Pattaya",
+      "key": "pattaya"
+    },
+    "price": "4.21",
+    "coordinates": {
+      "latitude": "12.888981891247887",
+      "longitude": "100.8828514318624",
+      "mapUrl": "https://maps.app.goo.gl/nzV1CANaxEkKNxCLA"
+    },
+    "address": {
+      "th": "188 Pattaya City, Bang Lamung District, Chon Buri 20150",
+      "en": ""
+    }
+  },
+  {
+    "id": 72529,
+    "title": "CHANN The Riverside Boromratchachonnani",
+    "key": "chann-theriverside",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/05/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ.png",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/chann-theriverside/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2024/06/CHANN-The-Riverside-Logo.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "400H006",
+    "cis_project_id": 91,
+    "brand_name": {
+      "th": "ฌาณ",
+      "en": "Chann"
+    },
+    "location": {
+      "name_th": "บรมราชชนนี",
+      "name_en": "Boromratchachonnani",
+      "key": "boromratchachonnani"
+    },
+    "price": "15.9",
+    "coordinates": {
+      "latitude": "13.781358479658786",
+      "longitude": "100.24032979150209",
+      "mapUrl": "https://maps.app.goo.gl/Zt56nFSksCawj32L8"
+    },
+    "address": {
+      "th": "Hom Kret, Sam Phran District, Nakhon Pathom 73110",
+      "en": ""
+    }
+  },
+  {
+    "id": 69689,
+    "title": "Maroon Ratchada 32",
+    "key": "maroonratchada32",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/05/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ-3.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/maroonratchada32/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2023/11/maroon32_logo_2.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "102C027",
+    "cis_project_id": 75,
+    "brand_name": {
+      "th": "มารูน รัชดา 32",
+      "en": "Maroon Ratchada 32"
+    },
+    "location": {
+      "name_th": "รัชดา",
+      "name_en": "Ratchada",
+      "key": "ratchada"
+    },
+    "price": "2.29",
+    "coordinates": {
+      "latitude": "13.817363306985929",
+      "longitude": "100.57999119961414",
+      "mapUrl": "https://maps.app.goo.gl/1VkFUnQqqwMke6XT8"
+    },
+    "address": {
+      "th": "39/6 ซอยรัชดาภิเษก 32 แขวงจันทรเกษม เขตจตุจักร กรุงเทพฯ 10900",
+      "en": ""
+    }
+  },
+  {
+    "id": 69645,
+    "title": "Kave Genesis",
+    "key": "kave-genesis",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/02/Kave-Genesis2.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-genesis/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "127C001",
+    "cis_project_id": 99,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "นครปฐม",
+      "name_en": "Nakhon Pathom",
+      "key": "nakhon-pathom"
+    },
+    "price": "1.89",
+    "coordinates": {
+      "latitude": "13.80701345740978",
+      "longitude": "100.05183711680517",
+      "mapUrl": "https://maps.app.goo.gl/Ue8PEP9YGWq3M1Jz6"
+    },
+    "address": {
+      "th": "801 ถ.หน้าผาเพชรเกษม ต.สนามจันทร์ อ.เมืองนครปฐม จ.นครปฐม 73000",
+      "en": ""
+    }
+  },
+  {
+    "id": 54411,
+    "title": "Kave Coco Bangsaen",
+    "key": "kave-coco-bangsaen",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/02/Kave-Coco.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-coco-bangsaen/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "124C001",
+    "cis_project_id": 81,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "บางแสน",
+      "name_en": "Bangsaen",
+      "key": "bangsaen"
+    },
+    "price": "2.19",
+    "coordinates": {
+      "latitude": "13.28420463874896",
+      "longitude": "100.9293082382376",
+      "mapUrl": "https://goo.gl/maps/bMsVfmDqr7qytfbg9"
+    },
+    "address": {
+      "th": "150 แสนสุข อำเภอชลบุรี ชลบุรี 20130",
+      "en": ""
+    }
+  },
+  {
+    "id": 69678,
+    "title": "Kave Luminous Bangmod",
+    "key": "kave-luminous-bangmod",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2024/01/Thumbnail.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-luminous-bangmod/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "102C035",
+    "cis_project_id": 101,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "บางมด",
+      "name_en": "",
+      "key": "bangmod"
+    },
+    "price": "2.39",
+    "coordinates": {
+      "latitude": "13.651456001437225",
+      "longitude": "100.48668049018795",
+      "mapUrl": "https://maps.app.goo.gl/VBAbGTtKRti7pRJ46"
+    },
+    "address": {
+      "th": "241/21-22 ถ. พุทธบูชา แขวงบางมด เขตทุ่งครุ กรุงเทพฯ 10140",
+      "en": ""
+    }
+  },
+  {
+    "id": 54451,
+    "title": "KAVE Wonderland | คอนโดใกล้ ม.ธรรมศาสตร์ รังสิต  เริ่ม 1.79 ล้านบาท* แต่งครบ พร้อมอยู่ คอนโด รังสิต",
+    "key": "kave-wonderland",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/10/Kave-wonderland.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-wonderland/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "102C032",
+    "cis_project_id": 93,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.79",
+    "coordinates": {
+      "latitude": "14.065863279389253",
+      "longitude": "100.611882738249",
+      "mapUrl": "https://maps.app.goo.gl/b9d6dPxY5MR6gB569"
+    },
+    "address": {
+      "th": "160 ถนน คลองหลวง ตำบล คลองหนึ่ง อำเภอคลองหลวง ปทุมธานี 12120 Khlong Luang District, 12121",
+      "en": ""
+    }
+  },
+  {
+    "id": 49228,
+    "title": "Modiz Voyage Srinakarin",
+    "key": "modiz-voyage-srinakarin",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2026/01/modiz-voyage_thumb_jan2026.webp",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-voyage-srinakarin/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "109C001",
+    "cis_project_id": 49,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "ศรีนครินทร์",
+      "name_en": "Srinakarin",
+      "key": "srinakarin"
+    },
+    "price": "2.39",
+    "coordinates": {
+      "latitude": "13.75428051626004",
+      "longitude": "100.6465336898176",
+      "mapUrl": "https://goo.gl/maps/RRSQua2D9BJQtigbA"
+    },
+    "address": {
+      "th": "84 1 ถ.ศรีนครินทร์ หัวหมาก บางกะปิ กรุงเทพฯ 10240",
+      "en": ""
+    }
+  },
+  {
+    "id": 49316,
+    "title": "Atmoz Canvas Rayong",
+    "key": "atmoz-canvas-rayong",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/08/Thumbnail-1.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-canvas-rayong/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "103C008",
+    "cis_project_id": 79,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ระยอง",
+      "name_en": "Rayong",
+      "key": "rayong"
+    },
+    "price": "1.69",
+    "coordinates": {
+      "latitude": "12.697125786203454",
+      "longitude": "101.27041467417368",
+      "mapUrl": "https://maps.app.goo.gl/RfZGkGc31MTcbY4RA?g_st=il"
+    },
+    "address": {
+      "th": "9 Tambon Choeng Noen, Mueang Rayong District, Rayong 21000",
+      "en": ""
+    }
+  },
+  {
+    "id": 54343,
+    "title": "Kave Embryo Rangsit คอนโดใกล้ ม.ราชมงคลธัญบุรี ‍แต่งครบ พร้อมอยู่ เริ่ม 1.39 ล้านบาท*",
+    "key": "kave-embryo",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/kave-embryo_thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-embryo/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "103C005",
+    "cis_project_id": 74,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.39",
+    "coordinates": {
+      "latitude": "14.041119936058974",
+      "longitude": "100.73433036523527",
+      "mapUrl": "https://goo.gl/maps/boEAZ971X1C8Nu386"
+    },
+    "address": {
+      "th": "คลองหก อำเภอคลองหลวง ปทุมธานี 12120",
+      "en": ""
+    }
+  },
+  {
+    "id": 54529,
+    "title": "Modiz Avantgarde | คอนโด High Rise ใกล้ ม.ธรรมศาสตร์ รังสิต ส่วนกลางหรู 3 ชั้น เริ่ม 1.99 ล้านบาท*",
+    "key": "modiz-avantgarde",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/New-Project-84.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-avantgarde/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "123C001",
+    "cis_project_id": 94,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "2.29",
+    "coordinates": {
+      "latitude": "14.065769386608675",
+      "longitude": "100.61233462050677",
+      "mapUrl": "https://maps.app.goo.gl/VFLcnoZx6PM6Juie7"
+    },
+    "address": {
+      "th": "160 ถ.คลองหลวง ต.คลองหนึ่ง อ.คลองหลวง ปทุมธานี 12120",
+      "en": ""
+    }
+  },
+  {
+    "id": 53855,
+    "title": "Atmoz Season Ladkrabang",
+    "key": "atmoz-season-ladkrabang",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/07/New-Project.webp",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-season-ladkrabang/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "119C001",
+    "cis_project_id": 72,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ลาดกระบัง",
+      "name_en": "Ladkrabang",
+      "key": "ladkrabang"
+    },
+    "price": "1.49",
+    "coordinates": {
+      "latitude": "13.762385353190558",
+      "longitude": "100.8027802094089",
+      "mapUrl": "https://goo.gl/maps/4gtdsCRKtj1j3L799"
+    },
+    "address": {
+      "th": "126 ถ.ฉลองกรุง ลำปลาทิว ลาดกระบัง กรุงเทพฯ 10520",
+      "en": ""
+    }
+  },
+  {
+    "id": 54085,
+    "title": "Atmoz Palacio",
+    "key": "atmoz-palacio-ladprao-wanghin",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/07/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ-2.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-palacio-ladprao-wanghin/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "122C001",
+    "cis_project_id": 71,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ลาดพร้าว - วังหิน",
+      "name_en": "Ladprao-Wanghin",
+      "key": "%e0%b8%a5%e0%b8%b2%e0%b8%94%e0%b8%9e%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%a7-%e0%b8%a7%e0%b8%b1%e0%b8%87%e0%b8%ab%e0%b8%b4%e0%b8%99"
+    },
+    "price": "1.99",
+    "coordinates": {
+      "latitude": "13.816961507201986",
+      "longitude": "100.59198047447633",
+      "mapUrl": "https://maps.app.goo.gl/cqmrjSY35WS8aaLa6"
+    },
+    "address": {
+      "th": "138 ถนนลาดพร้าววังหิน ลาดพร้าว กรุงเทพมหานคร 10230",
+      "en": ""
+    }
+  },
+  {
+    "id": 53828,
+    "title": "Modiz Vault Kaset Sripatum",
+    "key": "modiz-vault-kaset-sripatum",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/05/modiz-vault-kaset-thumbnail.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-vault-kaset-sripatum/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "121C001",
+    "cis_project_id": 76,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "เกษตร - ศรีปทุม",
+      "name_en": "Kaset-Sripathum",
+      "key": "%e0%b9%80%e0%b8%81%e0%b8%a9%e0%b8%95%e0%b8%a3-%e0%b8%a8%e0%b8%a3%e0%b8%b5%e0%b8%9b%e0%b8%97%e0%b8%b8%e0%b8%a1"
+    },
+    "price": "2.99",
+    "coordinates": {
+      "latitude": "13.857524623218056",
+      "longitude": "100.5813048552267",
+      "mapUrl": "https://maps.app.goo.gl/QNkb21rXM8THRm3DA?g_st=il"
+    },
+    "address": {
+      "th": "144 ถนนเลียบคลองบางเขน ลาดยาว จตุจักร กรุงเทพมหานคร 10900",
+      "en": ""
+    }
+  },
+  {
+    "id": 49340,
+    "title": "Atmoz Serene Sriracha​",
+    "key": "atmoz-serene-sriracha",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/DJI_20250717144236_0605_D-HDR-scaled.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-serene-sriracha/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "PDC001",
+    "cis_project_id": 51,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ศรีราชา",
+      "name_en": "Sriracha",
+      "key": "sriracha"
+    },
+    "price": "1.59",
+    "coordinates": {
+      "latitude": "13.122929860380932",
+      "longitude": "100.91765484008424",
+      "mapUrl": "https://goo.gl/maps/d88Hnmt6tkhHH73m9"
+    },
+    "address": {
+      "th": "ทุ่งสุขลา อำเภอศรีราชา ชลบุรี 20230",
+      "en": ""
+    }
+  },
+  {
+    "id": 54305,
+    "title": "Kave Universe Bangsaen",
+    "key": "kave-univers-bangsaen",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/Kave-Uni.png",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-univers-bangsaen/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "PDC002",
+    "cis_project_id": 66,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "บางแสน",
+      "name_en": "Bangsaen",
+      "key": "bangsaen"
+    },
+    "price": "2.39",
+    "coordinates": {
+      "latitude": "13.281164607750297",
+      "longitude": "100.93033517977489",
+      "mapUrl": "https://goo.gl/maps/xN2R5WuRfF3R8TXr8"
+    },
+    "address": {
+      "th": "57 แสนสุข อำเภอชลบุรี ชลบุรี 20130",
+      "en": ""
+    }
+  },
+  {
+    "id": 54544,
+    "title": "BaanPuripuri Home Office",
+    "key": "baanpuripuri-home-office",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/g2-1.jpg",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/baanpuripuri-home-office/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/ban-puri-puri.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "",
+    "cis_project_id": 42,
+    "brand_name": {
+      "th": "บ้านปุริปุริ",
+      "en": "Baan Puripuri"
+    },
+    "location": {
+      "name_th": "ลาดพร้าว",
+      "name_en": "Ladprao",
+      "key": "ladprao"
+    },
+    "price": "17.9",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": "https://goo.gl/maps/deT41tV4VCDyMU537"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 53800,
+    "title": "The Arbor Donmueang",
+    "key": "the-arbor-donmueang",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/AW_DC_Recommended-Project-Image_W320xH472-01.jpg",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/the-arbor-donmueang/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2023/11/the-arbor-logo-transparent_190x100.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "402H001",
+    "cis_project_id": 83,
+    "brand_name": {
+      "th": "ดิ อาเบอร์",
+      "en": "The Arbor"
+    },
+    "location": {
+      "name_th": "ดอนเมือง-แจ้งวัฒนะ",
+      "name_en": "Donmueang-Chaengwatthana",
+      "key": "donmueang-chaengwatthana"
+    },
+    "price": "13",
+    "coordinates": {
+      "latitude": "13.94059715059927",
+      "longitude": "100.56500252973369",
+      "mapUrl": "https://goo.gl/maps/cFRgC56JUpT9Kxq16"
+    },
+    "address": {
+      "th": "Liap Khlong Prapa Rd, Ban Mai, Pak Kret District, Nonthaburi 11120",
+      "en": ""
+    }
+  },
+  {
+    "id": 53969,
+    "title": "Kave Mutant Salaya",
+    "key": "kave-salaya",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/kave-salaya_thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-salaya/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "PPC001",
+    "cis_project_id": 46,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "ศาลายา",
+      "name_en": "Salaya",
+      "key": "%e0%b8%a8%e0%b8%b2%e0%b8%a5%e0%b8%b2%e0%b8%a2%e0%b8%b2"
+    },
+    "price": "2.69",
+    "coordinates": {
+      "latitude": "13.802188910289336",
+      "longitude": "100.31138272800735",
+      "mapUrl": "https://goo.gl/maps/dEjRMamAogtsYHNn8"
+    },
+    "address": {
+      "th": "เลขที่ 66 ศาลายา อำเภอพุทธมณฑล นครปฐม 73170",
+      "en": ""
+    }
+  },
+  {
+    "id": 70205,
+    "title": "The Arbor Ramintra &#8211; Watcharapol",
+    "key": "the-arbor-ramintra",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/Recommended-Project-Image-320x472-1.jpg",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/the-arbor-ramintra/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2023/11/the-arbor-logo-transparent_190x100.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "400H005",
+    "cis_project_id": 82,
+    "brand_name": {
+      "th": "ดิ อาเบอร์",
+      "en": "The Arbor"
+    },
+    "location": {
+      "name_th": "รามอินทรา-วัชรพล",
+      "name_en": "รามอินทรา-วัชรพล",
+      "key": "ramintra-watcharapol"
+    },
+    "price": "11.9-20",
+    "coordinates": {
+      "latitude": "13.897951078298352",
+      "longitude": "100.68515167502873",
+      "mapUrl": "https://maps.app.goo.gl/zNg89C4VR4j9sjVy9"
+    },
+    "address": {
+      "th": "54 จตุโชติ ซอย 23 Ao Ngoen, Sai Mai, Bangkok 10220",
+      "en": ""
+    }
+  },
+  {
+    "id": 54368,
+    "title": "Modiz Collection Bangpho",
+    "key": "modiz-collection-bangpho",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/Modiz-Collection-BangPho-Thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-collection-bangpho/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "EQC025",
+    "cis_project_id": 29,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "ติด MRT บางโพ",
+      "name_en": "",
+      "key": "%e0%b8%9a%e0%b8%b2%e0%b8%87%e0%b9%82%e0%b8%9e"
+    },
+    "price": "3.29",
+    "coordinates": {
+      "latitude": "13.805930250892134",
+      "longitude": "100.52208115728513",
+      "mapUrl": "https://goo.gl/maps/m2VWdyw3jPKRwS3n8"
+    },
+    "address": {
+      "th": "275 Pracharat Sai 1 Rd., Khwaeng Bang Sue, Bang Sue, Bangkok 10800",
+      "en": ""
+    }
+  },
+  {
+    "id": 53927,
+    "title": "Atmoz Oasis Onnut",
+    "key": "atmoz-oasis-onnut",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/atmoz-oasis-onnut-thumb-1.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-oasis-onnut/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "W7C001",
+    "cis_project_id": 60,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "อ่อนนุช",
+      "name_en": "Onnut",
+      "key": "onnut"
+    },
+    "price": "1.79",
+    "coordinates": {
+      "latitude": "13.713736225739297",
+      "longitude": "100.64739637012867",
+      "mapUrl": "https://goo.gl/maps/KSXWEkkWkp3rb6pM9"
+    },
+    "address": {
+      "th": "ถนนอ่อนนุช แขวงอ่อนนุช เขตสวนหลวง กรุงเทพฯ",
+      "en": ""
+    }
+  },
+  {
+    "id": 54390,
+    "title": "Atmoz Flow Minburi",
+    "key": "atmoz-flow-minburi",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/Atmoz-minburi-thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-flow-minburi/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "W8C001",
+    "cis_project_id": 63,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "มีนบุรี",
+      "name_en": "Minburi",
+      "key": "%e0%b8%a1%e0%b8%b5%e0%b8%99%e0%b8%9a%e0%b8%b8%e0%b8%a3%e0%b8%b5"
+    },
+    "price": "1.59",
+    "coordinates": {
+      "latitude": "13.812277391122405",
+      "longitude": "100.721984382423",
+      "mapUrl": "https://goo.gl/maps/Bx4J14qhuaPrkvP27"
+    },
+    "address": {
+      "th": "สีหบุรานุกิจ 10 มีนบุรี กรุงเทพฯ",
+      "en": ""
+    }
+  },
+  {
+    "id": 51388,
+    "title": "Atmoz Portrait Srisaman",
+    "key": "atmoz-portrait-srisaman",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2022/11/thumb-amoz.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-portrait-srisaman/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "EQC034",
+    "cis_project_id": 62,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ปากเกร็ด",
+      "name_en": "Pak-Kret",
+      "key": "pak-kret"
+    },
+    "price": "1.59",
+    "coordinates": {
+      "latitude": "13.939119092863216",
+      "longitude": "100.55166731310935",
+      "mapUrl": "https://goo.gl/maps/Y175JbSQDrUt3uME9"
+    },
+    "address": {
+      "th": "324 Ban Mai, Pak Kret District, Nonthaburi 11120",
+      "en": ""
+    }
+  },
+  {
+    "id": 53786,
+    "title": "The Honor Yothinpattana",
+    "key": "the-honor-yothinpattana",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/05/The-Honor-Yothin-thumbnail.jpg",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/the-honor-yothinpattana/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2023/05/the-honor-logo-2.jpeg",
+    "status": "new_project",
+    "utm_source": "asw-app_register",
+    "project_code": "401H001",
+    "cis_project_id": 73,
+    "brand_name": {
+      "th": "อื่น ๆ",
+      "en": "Other"
+    },
+    "location": {
+      "name_th": "ประดิษฐ์มนูธรรม",
+      "name_en": "Praditmanutham",
+      "key": "praditmanutham"
+    },
+    "price": "40",
+    "coordinates": {
+      "latitude": "13.804299279057435",
+      "longitude": "100.6337433571199",
+      "mapUrl": "https://maps.app.goo.gl/UPjuU2akayJqAwxM7"
+    },
+    "address": {
+      "th": "3 ถ. โพธิ์แก้ว Khlong Chan, Bang Kapi, Bangkok 10240",
+      "en": ""
+    }
+  },
+  {
+    "id": 54479,
+    "title": "Modiz Sukhumvit 50",
+    "key": "modiz-sukhumvit50",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/MDskv50_0529-e1752863281188.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-sukhumvit50/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "CMD005",
+    "cis_project_id": 17,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "สุขุมวิท",
+      "name_en": "Sukhumvit",
+      "key": "sukhumvit"
+    },
+    "price": "3.99",
+    "coordinates": {
+      "latitude": "13.702461032923535",
+      "longitude": "100.59008726098129",
+      "mapUrl": "https://goo.gl/maps/WhDMDMXKZv2abBW97"
+    },
+    "address": {
+      "th": "6645 ถ.อาจณรงค์ พระโขนง คลองเตย กรุงเทพมหานคร 10260",
+      "en": ""
+    }
+  },
+  {
+    "id": 53912,
+    "title": "Modiz Rhyme",
+    "key": "modiz-rhyme",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/Modiz-Rhyme-Ramkhamhaeng-thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-rhyme/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "W1C002",
+    "cis_project_id": 31,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "รามคำแหง",
+      "name_en": "Ramkhamhaeng",
+      "key": "ramkhamhaeng"
+    },
+    "price": "2.69",
+    "coordinates": {
+      "latitude": "13.759380798843559",
+      "longitude": "100.61815215283472",
+      "mapUrl": "https://goo.gl/maps/vuW8GTzZAvCuGfqW8"
+    },
+    "address": {
+      "th": "359 Ramkhamhaeng Rd, Hua Mak, Bang Kapi, Bangkok 10240",
+      "en": ""
+    }
+  },
+  {
+    "id": 53899,
+    "title": "Atmoz Tropicana Bangna",
+    "key": "atmoz-bangna",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/07/Atmoz_TROPICANA_BANGNA.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-bangna/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "W3C001",
+    "cis_project_id": 52,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "บางนา",
+      "name_en": "Bangna",
+      "key": "bangna"
+    },
+    "price": "1.69",
+    "coordinates": {
+      "latitude": "13.664268388835731",
+      "longitude": "100.65057054434095",
+      "mapUrl": "https://maps.app.goo.gl/FcBuWF5era2QWfg87"
+    },
+    "address": {
+      "th": "22 Bang Na-Trat Frontage Rd, Bang Na Tai, Bang Na, Bangkok 10260",
+      "en": ""
+    }
+  },
+  {
+    "id": 53886,
+    "title": "Atmoz Kanaal Rangsit",
+    "key": "atmoz-kanaal-rangsit",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2025/07/Atmoz-kanaal-rangsit-1.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-kanaal-rangsit/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "EQC032",
+    "cis_project_id": 59,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.79",
+    "coordinates": {
+      "latitude": "13.985577948432868",
+      "longitude": "100.60108290941223",
+      "mapUrl": "https://goo.gl/maps/U4dXhtNoPupE1CGR6"
+    },
+    "address": {
+      "th": "117 Rangsit-Pathum Thani Rd, Bang Phun, Mueang Pathum Thani District, Pathum Thani 12000",
+      "en": ""
+    }
+  },
+  {
+    "id": 51493,
+    "title": "Ivory Ratchada Ladprao",
+    "key": "ivory-ratchada-ladprao",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2022/08/ivory-ratchadaladprao.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/ivory-ratchada-ladprao/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/ivory.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "EQC020",
+    "cis_project_id": 27,
+    "brand_name": {
+      "th": "ไอเวอร์รี่",
+      "en": "Ivory"
+    },
+    "location": {
+      "name_th": "รัชดา",
+      "name_en": "Ratchada",
+      "key": "ratchada"
+    },
+    "price": "2.39",
+    "coordinates": {
+      "latitude": "13.815876063096526",
+      "longitude": "100.57876015358748",
+      "mapUrl": "https://goo.gl/maps/zXK6UNayHAWArwqN8"
+    },
+    "address": {
+      "th": "350/1-211 Soi Ratchadaphisek 32, Chan Kasem, Chatuchak, Bangkok 10900",
+      "en": ""
+    }
+  },
+  {
+    "id": 54040,
+    "title": "Kave Pop Salaya",
+    "key": "kave-pop-salaya",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/05/thumbnail-kave-pop-salaya-min.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-pop-salaya/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "102C028",
+    "cis_project_id": 89,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "ศาลายา",
+      "name_en": "Salaya",
+      "key": "%e0%b8%a8%e0%b8%b2%e0%b8%a5%e0%b8%b2%e0%b8%a2%e0%b8%b2"
+    },
+    "price": "2.29",
+    "coordinates": {
+      "latitude": "13.802525309330356",
+      "longitude": "100.31001484221663",
+      "mapUrl": "https://goo.gl/maps/b4DWF6o2DVarZwPKA"
+    },
+    "address": {
+      "th": "Salaya, Phutthamonthon District, Nakhon Pathom 73170",
+      "en": ""
+    }
+  },
+  {
+    "id": 50539,
+    "title": "Esta Rangsit Klong 2",
+    "key": "esta-rangsit-klong2",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/08/esta-rangsit-klong2-img.jpg",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/esta-rangsit-klong2/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2023/06/esta-logo.png",
+    "status": "ready_project",
+    "utm_source": "asw-app_register",
+    "project_code": "",
+    "cis_project_id": 65,
+    "brand_name": {
+      "th": "เอสต้า",
+      "en": "Esta"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "4.99",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": "https://goo.gl/maps/jqQQDmkEfXFzvV4p6"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 51128,
+    "title": "KAVE AVA",
+    "key": "kave-ava",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/07/New-Project-5.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-ava/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "TCU002",
+    "cis_project_id": 50,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "2.19",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": "https://www.google.com/maps?q=kave+ava&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=2ahUKEwiq8IGKs6r9AhU0D7cAHUI4CAgQ_AUoAXoECAEQAw"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 54102,
+    "title": "Brown Phahol 67",
+    "key": "brown-phahol-67",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/05/Brown-Pholyothin67_Thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/brown-phahol-67/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/brown.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "CBR002",
+    "cis_project_id": 14,
+    "brand_name": {
+      "th": "บราวน์ คอนโด",
+      "en": "Brown Condo"
+    },
+    "location": {
+      "name_th": "พหลโยธิน",
+      "name_en": "Phaholyothin",
+      "key": "phaholyothin"
+    },
+    "price": "2.49",
+    "coordinates": {
+      "latitude": "13.886878830543319",
+      "longitude": "100.60437921440618",
+      "mapUrl": "https://goo.gl/maps/eJbZqm44qhT2"
+    },
+    "address": {
+      "th": "369 ถ.พหลโยธิน อนุสาวรีย์ บางเขน กรุงเทพฯ 10220",
+      "en": ""
+    }
+  },
+  {
+    "id": 54114,
+    "title": "Modiz Interchange",
+    "key": "modiz-interchange",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/05/Modiz-Interchange_Thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-interchange/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "CMD003",
+    "cis_project_id": 13,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "รามอินทรา",
+      "name_en": "Ramintra",
+      "key": "ramintra"
+    },
+    "price": "6.39",
+    "coordinates": {
+      "latitude": "13.874053525892476",
+      "longitude": "100.59808067243713",
+      "mapUrl": "https://goo.gl/maps/QvWW7dmN7RjdkaC2A"
+    },
+    "address": {
+      "th": "7/18 ถ. รามอินทรา แขวงอนุเสาวรีย์ เขตบางเขน, กรุงเทพฯ",
+      "en": ""
+    }
+  },
+  {
+    "id": 54214,
+    "title": "Kave Seed Kaset",
+    "key": "kave-seed-kaset",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/06/kave-seed_thumbnail.webp",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-seed-kaset/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "10C001",
+    "cis_project_id": 61,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "เกษตร - ศรีปทุม",
+      "name_en": "Kaset-Sripathum",
+      "key": "%e0%b9%80%e0%b8%81%e0%b8%a9%e0%b8%95%e0%b8%a3-%e0%b8%a8%e0%b8%a3%e0%b8%b5%e0%b8%9b%e0%b8%97%e0%b8%b8%e0%b8%a1"
+    },
+    "price": "2.29",
+    "coordinates": {
+      "latitude": "13.839648764490576",
+      "longitude": "100.58512830146341",
+      "mapUrl": "https://maps.app.goo.gl/aTyVoko5vWNUeLq56"
+    },
+    "address": {
+      "th": "1568 ซ.พหลโยธิน 34 แยก 11 เสนานิคม จตุจักร กรุงเทพฯ 10900",
+      "en": ""
+    }
+  },
+  {
+    "id": 54551,
+    "title": "Glam Glamorous Living",
+    "key": "glam-glamorous-living",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/04/glam-glamorous-living-thumb.jpg",
+    "type": "house",
+    "webLink": "https://assetwise.co.th/House/glam-glamorous-living/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/glam.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "HGM001",
+    "cis_project_id": 20,
+    "brand_name": {
+      "th": "แกลม",
+      "en": "Glam"
+    },
+    "location": {
+      "name_th": "ลาดพร้าว",
+      "name_en": "Ladprao",
+      "key": "ladprao"
+    },
+    "price": "15.9",
+    "coordinates": {
+      "latitude": "13.8211332141751",
+      "longitude": "100.60168090146314",
+      "mapUrl": "https://goo.gl/maps/mfKdJJ5zLeKVstY77"
+    },
+    "address": {
+      "th": "Lat Phrao 71, Lat Phrao, Khwaeng Lat Phrao, Khet Lat Phrao, Bangkok 10230",
+      "en": ""
+    }
+  },
+  {
+    "id": 49465,
+    "title": "Maxxi Prime",
+    "key": "maxxiprime",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/maxxi-prime-thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/maxxiprime/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/maxxi-prime.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "M1C001",
+    "cis_project_id": 58,
+    "brand_name": {
+      "th": "แม็กซ์ซี่ ไพร์ม",
+      "en": "Maxxi Prime"
+    },
+    "location": {
+      "name_th": "รัชดา",
+      "name_en": "Ratchada",
+      "key": "ratchada"
+    },
+    "price": "2.69",
+    "coordinates": {
+      "latitude": "13.78740636104053",
+      "longitude": "100.57780411495592",
+      "mapUrl": "https://goo.gl/maps/kJnDNUSc4vrVn3Ea8"
+    },
+    "address": {
+      "th": "66 ถ.สุทธิสารวินิจฉัย ห้วยขวาง กรุงเทพฯ 10310",
+      "en": ""
+    }
+  },
+  {
+    "id": 54051,
+    "title": "Atmoz Ladprao 71",
+    "key": "atmoz-ladprao71",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/atmoz-ladprao71-thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-ladprao71/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "CAM002",
+    "cis_project_id": 6,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "ลาดพร้าว",
+      "name_en": "Ladprao",
+      "key": "ladprao"
+    },
+    "price": "2.99",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": "https://goo.gl/maps/FExFt6p7xPTENq8f9"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  },
+  {
+    "id": 53948,
+    "title": "Atmoz Ratchada Huaikwang",
+    "key": "atmoz-rh",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/ATMOZ-RATCHADA-HUAIKWANG_Thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/atmoz-rh/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/atmoz.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "EQC018",
+    "cis_project_id": 19,
+    "brand_name": {
+      "th": "แอทโมซ คอนโด",
+      "en": "Atmoz Condo"
+    },
+    "location": {
+      "name_th": "รัชดา",
+      "name_en": "Ratchada",
+      "key": "ratchada"
+    },
+    "price": "2.29",
+    "coordinates": {
+      "latitude": "13.769444058330507",
+      "longitude": "100.59752047632456",
+      "mapUrl": "https://goo.gl/maps/iUru9RLY4363K2Xj7"
+    },
+    "address": {
+      "th": "ซอยสหการประมูล ประชาอุทิศ แขวงวังทองหลาง เขตวังทองหลาง กรุงเทพมหานคร 10310",
+      "en": ""
+    }
+  },
+  {
+    "id": 54361,
+    "title": "Kave Town Island",
+    "key": "kave-town-island",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/05/AW-ISLAND-320-x-472.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kave-town-island/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "106C001",
+    "cis_project_id": 48,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.79",
+    "coordinates": {
+      "latitude": "14.041550377254218",
+      "longitude": "100.61026288982184",
+      "mapUrl": "https://maps.app.goo.gl/EvFvLBCovXFgr3FXA"
+    },
+    "address": {
+      "th": "94 Khlong Nueng, Khlong Luang District, Pathum Thani 12120",
+      "en": ""
+    }
+  },
+  {
+    "id": 54507,
+    "title": "Kave Town Colony",
+    "key": "kavetown-colony",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/kave-town-thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/kavetown-colony/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/kave.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "BUC003",
+    "cis_project_id": 47,
+    "brand_name": {
+      "th": "เคฟ คอนโด",
+      "en": "Kave Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "1.79",
+    "coordinates": {
+      "latitude": "14.041550693782625",
+      "longitude": "100.60746258242634",
+      "mapUrl": "https://goo.gl/maps/TrHTyTCRq5aiG1hY7"
+    },
+    "address": {
+      "th": "95 Khlong Nueng, Khlong Luang District, Pathum Thani 12120",
+      "en": ""
+    }
+  },
+  {
+    "id": 49119,
+    "title": "MODIZ Launch",
+    "key": "modiz-launch",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2022/08/modiz-launch.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/modiz-launch/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/modiz.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "CBC002",
+    "cis_project_id": 45,
+    "brand_name": {
+      "th": "โมดิซ คอนโด",
+      "en": "Modiz Condo"
+    },
+    "location": {
+      "name_th": "รังสิต",
+      "name_en": "Rangsit",
+      "key": "rangsit"
+    },
+    "price": "4.2",
+    "coordinates": {
+      "latitude": "14.065943493653794",
+      "longitude": "100.60804439037342",
+      "mapUrl": "https://goo.gl/maps/pzqZdmVLqm4Xhjzf8"
+    },
+    "address": {
+      "th": "Khlong Nueng, Khlong Luang District, Pathum Thani",
+      "en": ""
+    }
+  },
+  {
+    "id": 14149,
+    "title": "Brown Huaikwang",
+    "key": "brown-huaikwang",
+    "profileImage": "https://assetwise.co.th/wp-content/uploads/2023/03/Brown-HK_Thumb.jpg",
+    "type": "condominium",
+    "webLink": "https://assetwise.co.th/condominium/brown-huaikwang/",
+    "brand_icon": "https://assetwise.co.th/wp-content/uploads/2022/11/brown.png",
+    "status": "sold-out",
+    "utm_source": "asw-app_register",
+    "project_code": "",
+    "cis_project_id": 8,
+    "brand_name": {
+      "th": "บราวน์ คอนโด",
+      "en": "Brown Condo"
+    },
+    "location": {
+      "name_th": "รัชดา",
+      "name_en": "Ratchada",
+      "key": "ratchada"
+    },
+    "price": "4.49",
+    "coordinates": {
+      "latitude": "13.7563",
+      "longitude": "100.5018",
+      "mapUrl": "https://goo.gl/maps/pzqZdmVLqm4Xhjzf8"
+    },
+    "address": {
+      "th": "",
+      "en": ""
+    }
+  }
+]

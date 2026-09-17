@@ -58,6 +58,12 @@ export const registerSchema = z.object({
     .refine((value) => value === "" || new Date(value) >= startOfToday(), {
       message: messages.visitDatePast,
     }),
+
+  acceptedTerms: z
+    .boolean({ error: messages.termsRequired })
+    .refine((value) => value === true, {
+      message: messages.termsRequired,
+    }),
 });
 
 export type RegisterInput = z.input<typeof registerSchema>;
