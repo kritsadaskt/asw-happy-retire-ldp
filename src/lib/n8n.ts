@@ -3,8 +3,8 @@ import { toCisPayload, type CisPayload } from "@/lib/cis";
 import type { RegisterLead } from "@/lib/validation";
 
 /**
- * สำเนา lead ไป n8n ขนานกับ CIS
- * ใช้ชุดฟิลด์เดียวกับเอกสาร CIS เพื่อให้กู้ข้อมูลกลับ CIS ได้ถ้าต้นทางไม่รับ
+ * ทุกอย่างที่เกี่ยวกับการคุยกับ n8n อยู่ในไฟล์นี้ไฟล์เดียว
+ * payload ตามเอกสาร CIS + ฟิลด์ช่วย map ใน workflow
  */
 
 export const CAMPAIGN = "happy-retire";
@@ -12,11 +12,13 @@ export const SOURCE = "assetwise.co.th/happiness-never-retires";
 
 export type N8nConfig = {
   webhookUrl: string | null;
+  environment: "production" | "uat";
 };
 
 export function resolveN8nConfig(): N8nConfig {
   return {
     webhookUrl: process.env.N8N_WEBHOOK_URL?.trim() || null,
+    environment: process.env.APP_ENV === "production" ? "production" : "uat",
   };
 }
 
@@ -69,12 +71,14 @@ export async function submitLeadToN8n(lead: RegisterLead): Promise<N8nResult> {
     };
   }
 
+  logN8n("n8n payload", payload);
+
   if (!config.webhookUrl) {
-    logN8n("n8n skipped — N8N_WEBHOOK_URL is not set", {});
+    logN8n("n8n skipped — N8N_WEBHOOK_URL is not set", {
+      environment: config.environment,
+    });
     return { status: "not-configured", payload };
   }
-
-  logN8n("n8n payload", payload);
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12_000);
