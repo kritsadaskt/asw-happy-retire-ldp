@@ -3,9 +3,8 @@ import { findMapProject } from "@/lib/projects";
 import type { RegisterLead } from "@/lib/validation";
 
 /**
- * ทุกอย่างที่เกี่ยวกับการคุยกับ CIS อยู่ในไฟล์นี้ไฟล์เดียว
- * เมื่อต้องปรับ shape ของ payload ให้แก้ที่ `toCisPayload()`
- * โดยไม่ต้องแตะ route handler หรือฟอร์ม
+ * ชุดฟิลด์ตามเอกสาร CIS SaveOtherSource
+ * เว็บไม่ยิง CIS ตรงแล้ว — n8n รับ payload นี้แล้วค่อยส่งต่อ
  */
 
 /** Web Site */
@@ -15,19 +14,13 @@ export const CONTACT_TYPE_ID = 35;
 /** Follow up = Yes */
 export const FOLLOW_UP_ID = 42;
 /** รหัสช่องทางใหม่ของแคมเปญ — เปลี่ยนได้ด้วย CIS_REF_ID */
-export const DEFAULT_REF_ID = 5345;
+export const DEFAULT_REF_ID = 20260917;
 export const REF_DETAIL = "Happiness Never Retires";
+export const FALLBACK_EMAIL = "no-email@assetwise.co.th";
 
 const TIME_ZONE = "Asia/Bangkok";
 const DEFAULT_APPOINT_TIME = "08:00";
 const DEFAULT_APPOINT_TIME_END = "20:00";
-
-export type CisConfig = {
-  endpoint: string | null;
-  apiKey: string | null;
-  refId: number;
-  environment: "production" | "uat";
-};
 
 function envInt(name: string, fallback: number): number {
   const raw = process.env[name]?.trim();
@@ -36,24 +29,8 @@ function envInt(name: string, fallback: number): number {
   return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
 }
 
-/** `Authorization: Basic <CIS_API_KEY>` — ถ้าค่าใน env มีคำว่า Basic อยู่แล้วจะไม่ซ้ำ */
-function basicAuthorization(apiKey: string): string {
-  const token = apiKey.replace(/^Basic\s+/i, "").trim();
-  return `Basic ${token}`;
-}
-
-export function resolveCisConfig(): CisConfig {
-  const isProduction = process.env.APP_ENV === "production";
-  const endpoint = isProduction
-    ? process.env.CIS_ENDPOINT_PROD
-    : process.env.CIS_ENDPOINT_UAT;
-
-  return {
-    endpoint: endpoint?.trim() || null,
-    apiKey: process.env.CIS_API_KEY?.trim() || null,
-    refId: envInt("CIS_REF_ID", DEFAULT_REF_ID),
-    environment: isProduction ? "production" : "uat",
-  };
+export function resolveRefId(): number {
+  return envInt("CIS_REF_ID", DEFAULT_REF_ID);
 }
 
 const labelOf = (
@@ -149,11 +126,11 @@ export function toCisPayload(
     ProjectID: project.cisProjectId,
     ContactChannelID: CONTACT_CHANNEL_ID,
     ContactTypeID: CONTACT_TYPE_ID,
-    RefID: resolveCisConfig().refId,
+    RefID: resolveRefId(),
     Fname,
     Lname,
     Tel: tel || null,
-    Email: 'no-email@assetwise.co.th',
+    Email: FALLBACK_EMAIL,
     Ref: REF_DETAIL,
     RefDate: formatRefDate(now),
     FollowUpID: FOLLOW_UP_ID,
@@ -173,88 +150,4 @@ export function toCisPayload(
     AppointTimeEnd: hasVisitDate ? DEFAULT_APPOINT_TIME_END : "",
     LineID: "",
   };
-}
-
-export type CisResult = {
-  status: "delivered" | "not-configured" | "rejected" | "unreachable";
-  payload: CisPayload | null;
-  httpStatus?: number;
-  detail?: string;
-};
-
-function logCis(event: string, data: Record<string, unknown>) {
-  console.info(`[register] ${event}`, data);
-}
-
-export async function submitLeadToCis(lead: RegisterLead): Promise<CisResult> {
-  const config = resolveCisConfig();
-  const payload = toCisPayload(lead);
-
-  if (!payload) {
-    logCis("CIS payload missing cis_project_id", { project: lead.project });
-    return {
-      status: "rejected",
-      payload: null,
-      httpStatus: 400,
-      detail: "missing cis_project_id",
-    };
-  }
-
-  logCis("CIS payload", payload);
-
-  if (!config.endpoint || !config.apiKey) {
-    logCis("CIS skipped — endpoint or API key is not set", {
-      environment: config.environment,
-      hasEndpoint: Boolean(config.endpoint),
-      hasApiKey: Boolean(config.apiKey),
-    });
-    return { status: "not-configured", payload };
-  }
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12_000);
-
-  try {
-    const response = await fetch(config.endpoint, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Authorization: basicAuthorization(config.apiKey),
-      },
-      body: JSON.stringify(payload),
-      cache: "no-store",
-      signal: controller.signal,
-    });
-
-    const detail = (await response.text().catch(() => "")).slice(0, 2000);
-
-    logCis("CIS response", {
-      endpoint: config.endpoint,
-      httpStatus: response.status,
-      ok: response.ok,
-      body: detail || "(empty)",
-    });
-
-    if (!response.ok) {
-      return {
-        status: "rejected",
-        payload,
-        httpStatus: response.status,
-        detail,
-      };
-    }
-
-    return {
-      status: "delivered",
-      payload,
-      httpStatus: response.status,
-      detail,
-    };
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : "unknown error";
-    logCis("CIS unreachable", { endpoint: config.endpoint, detail });
-    return { status: "unreachable", payload, detail };
-  } finally {
-    clearTimeout(timeout);
-  }
 }
