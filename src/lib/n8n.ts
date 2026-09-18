@@ -8,6 +8,7 @@ import type { RegisterLead } from "@/lib/validation";
  */
 
 export const CAMPAIGN = "happy-retire";
+export const CAMPAIGN_KEY = "HappinessNeverRetires";
 export const SOURCE = "assetwise.co.th/happiness-never-retires";
 
 export type N8nConfig = {
@@ -24,6 +25,7 @@ export function resolveN8nConfig(): N8nConfig {
 
 export type N8nPayload = CisPayload & {
   campaign: string;
+  campaign_key: string;
   source: string;
   projectKey: string;
   projectLabel: string;
@@ -39,6 +41,7 @@ export function toN8nPayload(lead: RegisterLead): N8nPayload | null {
   return {
     ...cis,
     campaign: CAMPAIGN,
+    campaign_key: CAMPAIGN_KEY,
     source: SOURCE,
     projectKey: lead.project,
     projectLabel: project?.name ?? "",
