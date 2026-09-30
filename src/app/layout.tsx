@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
+import { Gtm } from "@/components/layout/Gtm";
 import { site } from "@/content/site";
 import { absoluteUrl, siteOrigin, withBasePath } from "@/lib/paths";
 
@@ -56,7 +57,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="th" className={brandFont.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Gtm />
+        {children}
+      </body>
     </html>
   );
 }

@@ -42,6 +42,9 @@ export const site = {
 
   allProjectsUrl: "https://www.assetwise.co.th/",
 
+  /** Container ID ของ Google Tag Manager — เว้นว่างถ้าไม่ต้องการโหลด */
+  gtmId: "GTM-MM872QW",
+
   seo: {
     title: "Happiness Never Retires | ความสุข..ไม่มีวันเกษียณ",
     description:
