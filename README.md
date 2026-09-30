@@ -128,6 +128,7 @@ Messenger / Instagram / YouTube ที่ต้องใช้ชุด brands �
 | `APP_ENV`                         | server  | `production` = ขาด webhook แล้วตอบ error, ค่าอื่น = โหมด demo   |
 | `N8N_WEBHOOK_URL`                 | server  | URL webhook ของ n8n ที่รับข้อมูลลงทะเบียน                      |
 | `CIS_REF_ID`                      | server  | รหัสช่องทางใหม่ของแคมเปญใน payload (ค่าเริ่มต้น `20260917`)     |
+| `NEXT_PUBLIC_GTM_ID`              | browser | Container GTM (ค่าเริ่มต้น `GTM-MM872QW` ใน `site.ts`)          |
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | browser | ไม่ใส่ = แสดงภาพแทนแผนที่                                      |
 | `NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID`  | browser | จำเป็นสำหรับหมุดโลโก้ (Advanced Marker) ไม่ใส่ = ใช้หมุดมาตรฐาน |
 | `NEXT_PUBLIC_BASE_PATH`           | ทั้งคู่ | `/happyretire` บน Vercel, ปล่อยว่างตอน dev                     |
